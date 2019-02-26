@@ -203,6 +203,14 @@
     <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaReflection.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\BaseWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DelegateFactory.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_DOTweenWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_LoopTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_RotateModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_SequenceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaBinder.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_AppConstWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ByteBufferWrap.cs" />
@@ -515,6 +523,18 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>E:/AProGameFramework/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>E:/AProGameFramework/Assets/Plugins/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>E:/AProGameFramework/Assets/Plugins/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>E:/AProGameFramework/Assets/Plugins/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>E:/AProGameFramework/Assets/Plugins/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
