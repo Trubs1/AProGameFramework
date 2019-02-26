@@ -1,4 +1,5 @@
-﻿using System;
+﻿///公司的框架里缺少此System_Collections_Generic_ListWrap 猜测这导致lua不能变量list
+using System;
 using LuaInterface;
 using System.Collections.Generic;
 using System.Reflection;

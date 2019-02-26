@@ -48,3 +48,7 @@ function findPanel(str)
 	end
 	return obj:GetComponent("BaseLua");
 end
+
+function IsNil(uobj)
+    return uobj == nil or uobj:Equals(nil)
+end

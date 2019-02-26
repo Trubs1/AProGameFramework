@@ -11,7 +11,9 @@ public class TestOutArg : MonoBehaviour
                                                                             
             function TestPick(ray)                                                                  
                 local _layer = 2 ^ LayerMask.NameToLayer('Default')                
-                local time = os.clock()                                                  
+                local time = os.clock()       
+
+                --out处替换成nil,此处本来的数值将在return最后
                 local flag, hit = UnityEngine.Physics.Raycast(ray, nil, 5000, _layer)                                              
                 --local flag, hit = UnityEngine.Physics.Raycast(ray, RaycastHit.out, 5000, _layer)                                
                                 
