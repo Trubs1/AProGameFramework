@@ -273,9 +273,9 @@ namespace LuaFramework {
         }
 
         /// <summary>
-        /// 载入素材
+        /// 同步载入素材
         /// </summary>
-        public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object {
+        public T LoadAssetSync<T>(string abname, string assetname) where T : UnityEngine.Object {
             abname = abname.ToLower();
             AssetBundle bundle = LoadAssetBundle(abname);
             return bundle.LoadAsset<T>(assetname);
@@ -285,7 +285,7 @@ namespace LuaFramework {
             abName = abName.ToLower();
             List<UObject> result = new List<UObject>();
             for (int i = 0; i < assetNames.Length; i++) {
-                UObject go = LoadAsset<UObject>(abName, assetNames[i]);
+                UObject go = LoadAssetSync<UObject>(abName, assetNames[i]);
                 if (go != null) result.Add(go);
             }
             if (func != null) func.Call((object)result.ToArray());

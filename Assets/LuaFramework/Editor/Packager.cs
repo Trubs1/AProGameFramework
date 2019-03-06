@@ -7,6 +7,22 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using LuaFramework;
 
+public class PackageConfig
+{
+    public static List<PackageInfo> GetPackageConfig()
+    {
+        List<PackageInfo> info = new List<PackageInfo>();
+
+        info.Add(new PackageInfo("Assets/Prefabs", 99));
+
+        //info.Add(new PackageInfo("Assets/Materials", 1));
+        //info.Add(new PackageInfo("Assets/Textures", 1));
+        //info.Add(new PackageInfo("Assets/SceneSources", 2));
+        //info.Add(new PackageInfo("Assets/HotUpdates", 99));
+
+        return info;
+    }
+}
 public class Packager {
     public static string platform = string.Empty;
     static List<string> paths = new List<string>();
@@ -32,13 +48,7 @@ public class Packager {
 
     [MenuItem("LuaFramework/Build iPhone Resource", false, 100)]
     public static void BuildiPhoneResource() {
-        BuildTarget target;
-#if UNITY_5
-        target = BuildTarget.iOS;
-#else
-        target = BuildTarget.iOS;
-#endif
-        BuildAssetResource(target);
+        BuildAssetResource(BuildTarget.iOS);
     }
 
     [MenuItem("LuaFramework/Build Android Resource", false, 101)]
@@ -74,6 +84,8 @@ public class Packager {
         if (AppConst.ExampleMode) {
             HandleExampleBundle();
         }
+        HandleAssetsBundle();
+
         string resPath = "Assets/" + AppConst.AssetDir;
         BuildPipeline.BuildAssetBundles(resPath, maps.ToArray(), BuildAssetBundleOptions.None, target);
         BuildFileIndex();
@@ -81,6 +93,84 @@ public class Packager {
         string streamDir = Application.dataPath + "/" + AppConst.LuaTempDir;
         if (Directory.Exists(streamDir)) Directory.Delete(streamDir, true);
         AssetDatabase.Refresh();
+    }
+
+    static string GetPathBundleName(string path)
+    {
+        string name;
+        if (path.Contains("Resources"))
+        {
+            int index = path.LastIndexOf("Resources");
+
+            name = path.Substring(index + 9);
+        }
+        else
+        {
+            name = path;
+        }
+
+        return path;
+    }
+
+    static string FormatBundleName(string name)
+    {
+        if (name.Contains("Resources/"))
+        {
+            int index = name.LastIndexOf("Resources/");
+
+            name = name.Substring(index + 10);
+        }
+        else
+        {
+            name = name.Substring(7);
+        }
+
+        return name.Replace('/', '_');
+    }
+
+    /// <summary>
+    /// 打包目标目录，本方法会递归目录，将每一个目录打包成一个ab包
+    /// </summary>
+    /// <param name="bundleName"></param>
+    /// <param name="path"></param>
+    static void AddBuildPackageinfoMap(string path, int tarDeep, string bundleName = null, int curDeep = 0)
+    {
+        if (bundleName == null)
+        {
+            bundleName = GetPathBundleName(path);
+        }
+
+        //UnityEngine.Debug.Log("["+ curDeep + "] ["+ tarDeep + "] "+ bundleName);
+        var files = Directory.GetFiles(path);
+        if (files.Length > 0 && bundleName != "")
+        {
+            AddBuildMap(FormatBundleName(bundleName) + AppConst.ExtName, "*.*", path);
+        }
+
+        curDeep++;
+        if (Directory.GetDirectories(path).Length > 0)
+        {
+            foreach (string dir in Directory.GetDirectories(path))
+            {
+                string newBundleName;
+                if (curDeep <= tarDeep)
+                {
+                    if (bundleName == "")
+                    {
+                        newBundleName = new DirectoryInfo(dir).Name;
+                    }
+                    else
+                    {
+                        newBundleName = bundleName + "/" + new DirectoryInfo(dir).Name;
+                    }
+                }
+                else
+                {
+                    newBundleName = bundleName;
+                }
+                AddBuildPackageinfoMap(dir, tarDeep, newBundleName, curDeep);
+            }
+        }
     }
 
     static void AddBuildMap(string bundleName, string pattern, string path) {
@@ -166,6 +256,22 @@ public class Packager {
 
         AddBuildMap("prompt_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Prompt");
         AddBuildMap("shared_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Shared");
+    }
+
+    /// <summary>
+    /// 处理PackageConfig配置的资源
+    /// </summary>
+    static void HandleAssetsBundle()
+    {
+        string resPath = AppDataPath + "/" + AppConst.AssetDir + "/";
+        if (!Directory.Exists(resPath)) Directory.CreateDirectory(resPath);
+
+        List<PackageInfo> infoList = PackageConfig.GetPackageConfig();
+
+        for (int k = 0; k < infoList.Count; k++)
+        {
+            AddBuildPackageinfoMap(infoList[k].Path, infoList[k].Deep);
+        }
     }
 
     /// <summary>
@@ -276,6 +382,7 @@ public class Packager {
             isWin = true;
             luaexe = "luajit.exe";
             args = "-b -g " + srcFile + " " + outFile;
+            //需要把luajit提出到assets同级, 代码已经处理了...
             exedir = AppDataPath.Replace("assets", "") + "LuaEncoder/luajit/";
         } else if (Application.platform == RuntimePlatform.OSXEditor) {
             isWin = false;
@@ -327,5 +434,18 @@ public class Packager {
             pro.WaitForExit();
         }
         AssetDatabase.Refresh();
+    }
+}
+
+public class PackageInfo
+{
+    public string Path;
+    public int Deep;
+
+    public PackageInfo(string path, int deep)
+    {
+
+        this.Path = path;
+        this.Deep = deep;
     }
 }

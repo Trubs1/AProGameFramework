@@ -24,6 +24,8 @@ function LoginPanel:Init()
 	print("~~~~Awake",self.loginBtn)
 	self.loginBtn.onClick:AddListener(function ()
 			print("~~~~谁点我?")
+			self.titleTxt.text = "Loading .. ."
+			self.titleBgImg.color = Color.yellow
 		end)
 end
 
