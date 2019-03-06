@@ -10,6 +10,8 @@ local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
+require("GlobalEnvironment")
+
 require "Logic/LuaClass"
 require "Logic/CtrlManager"
 require "Common/functions"
@@ -32,27 +34,30 @@ end
 
 --初始化完成 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息--
 function Game.OnInitOK()
-    print("<color=yellow>OnInitOK初始化完成 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息:</color>",1)
-    AppConst.SocketPort = 2012;
-    AppConst.SocketAddress = "127.0.0.1";
-    networkMgr:SendConnect();
+    print("<color=yellow>OnInitOK_初始化完成 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息:</color>",1)
+    PanelMgr:Show(PanelsCfg.LoginPanel)
 
-    --注册LuaView--
-    this.InitViewPanels();
 
-    this.test_class_func();
-    this.test_pblua_func();
-    this.test_cjson_func();
-    this.test_pbc_func();
-    this.test_lpeg_func();
-    this.test_sproto_func();
-    coroutine.start(this.test_coroutine);
+    -- AppConst.SocketPort = 2012;
+    -- AppConst.SocketAddress = "127.0.0.1";
+    -- networkMgr:SendConnect();
 
-    CtrlManager.Init();
-    local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
-    if ctrl ~= nil and AppConst.ExampleMode == 1 then
-        ctrl:Awake();
-    end
+    -- --注册LuaView--
+    -- this.InitViewPanels();
+
+    -- this.test_class_func();
+    -- this.test_pblua_func();
+    -- this.test_cjson_func();
+    -- this.test_pbc_func();
+    -- this.test_lpeg_func();
+    -- this.test_sproto_func();
+    -- coroutine.start(this.test_coroutine);
+
+    -- CtrlManager.Init();
+    -- local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
+    -- if ctrl ~= nil and AppConst.ExampleMode == 1 then
+    --     ctrl:Awake();
+    -- end
        
     logWarn('LuaFramework InitOK--->>>');
 end

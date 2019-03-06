@@ -1,73 +1,129 @@
-﻿using UnityEngine;
+﻿///Copyright (c) 2019 WangQiang(279980661@qq.com)
+///description: lua对象的行为类
+///author:Trubs (WQ)
+///Date:2019/03/05
+
+using UnityEngine;
 using LuaInterface;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 
-namespace LuaFramework {
-    public class LuaBehaviour : View {
-        private string data = null;
-        private Dictionary<string, LuaFunction> buttons = new Dictionary<string, LuaFunction>();
-
-        protected void Awake() {
-            Util.CallMethod(name, "Awake", gameObject);
+namespace LuaFramework
+{
+    /// <summary>
+    /// lua中的对象(GameObject)所有的特征
+    /// </summary>
+    public class LuaBehaviour : View
+    {
+        [System.Serializable]
+        public struct Compnt
+        {
+            public string key;
+            public Component cpnt;
         }
+        protected LuaTable table_;
+        public Compnt[] compnts;
+        protected LuaFunction m_updateFunc;
+        protected LuaFunction m_fixedUpdateFunc;
 
-        protected void Start() {
-            Util.CallMethod(name, "Start");
-        }
-
-        protected void OnClick() {
-            Util.CallMethod(name, "OnClick");
-        }
-
-        protected void OnClickEvent(GameObject go) {
-            Util.CallMethod(name, "OnClick", go);
-        }
-
-        /// <summary>
-        /// 添加单击事件
-        /// </summary>
-        public void AddClick(GameObject go, LuaFunction luafunc) {
-            if (go == null || luafunc == null) return;
-            buttons.Add(go.name, luafunc);
-            go.GetComponent<Button>().onClick.AddListener(
-                delegate() {
-                    luafunc.Call(go);
+        public void InitCompnts()
+        {
+            if (null == compnts)
+            {
+                Debug.LogWarning("此脚本似乎没有获取任何组件:" + this.gameObject.ToString());
+                return;
+            }
+            foreach (Compnt compnt in compnts)
+            {
+                if (0 != compnt.key.Length)
+                {
+                    table_[compnt.key] = compnt.cpnt;
                 }
-            );
+                else
+                {
+                    string name = compnt.cpnt.name;
+                    if (name.IndexOf("(Clone)") > -1)
+                    {
+                        name = name.Replace("(Clone)", string.Empty);
+                    }
+                    table_[name] = compnt.cpnt;
+                }
+            }
         }
 
-        /// <summary>
-        /// 删除单击事件
-        /// </summary>
-        /// <param name="go"></param>
-        public void RemoveClick(GameObject go) {
-            if (go == null) return;
-            LuaFunction luafunc = null;
-            if (buttons.TryGetValue(go.name, out luafunc)) {
-                luafunc.Dispose();
-                luafunc = null;
-                buttons.Remove(go.name);
+        public void Initiate(LuaTable table)
+        {
+            Debug.Log(string.Format("<color=yellow>初始化luaBehaviour:{0}</color>", table));
+            table_ = table;
+            InitCompnts();
+            table_["transform"] = transform;
+            m_updateFunc = table_["Update"] as LuaFunction;
+            m_fixedUpdateFunc = table_["FixedUpdate"] as LuaFunction;
+        }
+
+        protected void Start()
+        {
+            if (table_ != null)
+            {
+                LuaFunction func = table_["Start"] as LuaFunction;
+                if (func != null)
+                {
+                    func.Call(table_);
+                }
             }
         }
 
-        /// <summary>
-        /// 清除单击事件
-        /// </summary>
-        public void ClearClick() {
-            foreach (var de in buttons) {
-                if (de.Value != null) {
-                    de.Value.Dispose();
-                }
-            }
-            buttons.Clear();
+        protected void Update()
+        {
+            if (null == m_updateFunc) return;
+            m_updateFunc.Call(table_, Time.deltaTime);
         }
 
-        //-----------------------------------------------------------------
-        protected void OnDestroy() {
-            ClearClick();
+        protected void FixedUpdate()
+        {
+            if (null == m_fixedUpdateFunc) return;
+            m_fixedUpdateFunc.Call(table_);
+        }
+
+        protected void OnEnable()
+        {
+            if (table_ != null)
+            {
+                LuaFunction func = table_["OnEnable"] as LuaFunction;
+                if (func != null)
+                {
+                    func.Call(table_);
+                }
+            }
+        }
+
+        protected void OnDisable()
+        {
+            if (table_ != null)
+            {
+                LuaFunction func = table_["OnDisable"] as LuaFunction;
+                if (func != null)
+                {
+                    func.Call(table_);
+                }
+            }
+        }
+
+        protected void OnDestroy()
+        {
+            if (table_ != null)
+            {
+                LuaFunction func = table_["OnDestroy"] as LuaFunction;
+                if (func != null)
+                {
+                    func.Call(table_);
+                }
+
+                table_.Dispose(true);
+                table_ = null;
+            }
 #if ASYNC_MODE
             string abName = name.ToLower().Replace("panel", "");
             ResManager.UnloadAssetBundle(abName + AppConst.ExtName);

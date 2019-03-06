@@ -24,17 +24,17 @@ public static class CustomSettings
     //unity 有些类作为sealed class, 其实完全等价于静态类
     public static List<Type> staticClassTypes = new List<Type>
     {        
-        typeof(UnityEngine.Application),
-        typeof(UnityEngine.Time),
-        typeof(UnityEngine.Screen),
-        typeof(UnityEngine.SleepTimeout),
-        typeof(UnityEngine.Input),
-        typeof(UnityEngine.Resources),
-        typeof(UnityEngine.Physics),
-        typeof(UnityEngine.RenderSettings),
-        typeof(UnityEngine.QualitySettings),
-        typeof(UnityEngine.GL),
-        typeof(UnityEngine.Graphics),
+        typeof(Application),
+        typeof(Time),
+        typeof(Screen),
+        typeof(SleepTimeout),
+        typeof(Input),
+        typeof(Resources),
+        typeof(Physics),
+        typeof(RenderSettings),
+        typeof(QualitySettings),
+        typeof(GL),
+        typeof(Graphics),
     };
 
     //附加导出委托类型(在导出委托时, customTypeList 中牵扯的委托类型都会导出， 无需写在这里)
@@ -48,118 +48,84 @@ public static class CustomSettings
         _DT(typeof(System.Func<int, int>)),
     };
 
-    //在这里添加你要导出注册到lua的类型列表
+    /// <summary>
+    /// 自定义导出到lua的类型列表
+    /// </summary>
     public static BindType[] customTypeList =
-    {                
-        //------------------------为例子导出--------------------------------
-        //_GT(typeof(TestEventListener)),
-        //_GT(typeof(TestProtol)),
-        //_GT(typeof(TestAccount)),
-        //_GT(typeof(Dictionary<int, TestAccount>)).SetLibName("AccountMap"),
-        //_GT(typeof(KeyValuePair<int, TestAccount>)),
-        //_GT(typeof(Dictionary<int, TestAccount>.KeyCollection)),
-        //_GT(typeof(Dictionary<int, TestAccount>.ValueCollection)),
-        //_GT(typeof(TestExport)),
-        //_GT(typeof(TestExport.Space)),
-        //-------------------------------------------------------------------        
-                        
-        _GT(typeof(LuaInjectionStation)),
-        _GT(typeof(InjectType)),
-        _GT(typeof(Debugger)).SetNameSpace(null),          
+    {
+///================本游戏逻辑类型自定义导出==========================================================================
 
-#if USING_DOTWEENING
-        _GT(typeof(DG.Tweening.DOTween)),
-        _GT(typeof(DG.Tweening.Tween)).SetBaseType(typeof(System.Object)).AddExtendType(typeof(DG.Tweening.TweenExtensions)),
-        _GT(typeof(DG.Tweening.Sequence)).AddExtendType(typeof(DG.Tweening.TweenSettingsExtensions)),
-        _GT(typeof(DG.Tweening.Tweener)).AddExtendType(typeof(DG.Tweening.TweenSettingsExtensions)),
-        _GT(typeof(DG.Tweening.LoopType)),
-        _GT(typeof(DG.Tweening.PathMode)),
-        _GT(typeof(DG.Tweening.PathType)),
-        _GT(typeof(DG.Tweening.RotateMode)),
-        _GT(typeof(Component)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        _GT(typeof(Transform)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        //_GT(typeof(Light)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        _GT(typeof(Material)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        _GT(typeof(Rigidbody)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        _GT(typeof(Camera)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        _GT(typeof(AudioSource)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        //_GT(typeof(LineRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        //_GT(typeof(TrailRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),    
-#else
-                                         
-        _GT(typeof(Component)),
-        _GT(typeof(Transform)),
-        _GT(typeof(Material)),
-        //_GT(typeof(Light)),
-        _GT(typeof(Rigidbody)),
-        _GT(typeof(Camera)),
-        _GT(typeof(AudioSource)),
-        //_GT(typeof(LineRenderer))
-        //_GT(typeof(TrailRenderer))
-#endif
-      
+
+
+
+
+///================框架基础导出==========================================================================
         _GT(typeof(Behaviour)),
-        _GT(typeof(MonoBehaviour)),        
+        _GT(typeof(MonoBehaviour)),
         _GT(typeof(GameObject)),
         _GT(typeof(TrackedReference)),
         _GT(typeof(Application)),
         _GT(typeof(Physics)),
         _GT(typeof(Collider)),
-        _GT(typeof(Time)),        
+        _GT(typeof(Time)),
         _GT(typeof(Texture)),
         _GT(typeof(Texture2D)),
-        _GT(typeof(Shader)),        
+        _GT(typeof(Shader)),
         _GT(typeof(Renderer)),
         _GT(typeof(WWW)),
-        _GT(typeof(Screen)),        
+        _GT(typeof(Screen)),
         _GT(typeof(CameraClearFlags)),
-        _GT(typeof(AudioClip)),        
+        _GT(typeof(AudioClip)),
         _GT(typeof(AssetBundle)),
         _GT(typeof(ParticleSystem)),
-        _GT(typeof(AsyncOperation)).SetBaseType(typeof(System.Object)),        
+        _GT(typeof(AsyncOperation)).SetBaseType(typeof(System.Object)),
         _GT(typeof(LightType)),
         _GT(typeof(SleepTimeout)),
-#if UNITY_5_3_OR_NEWER && !UNITY_5_6_OR_NEWER
-        _GT(typeof(UnityEngine.Experimental.Director.DirectorPlayer)),
-#endif
+
         _GT(typeof(Animator)),
         _GT(typeof(Input)),
         _GT(typeof(KeyCode)),
         _GT(typeof(SkinnedMeshRenderer)),
-        _GT(typeof(Space)),      
-       
+        _GT(typeof(Space)),
+        _GT(typeof(UnityEngine.EventSystems.PointerEventData)),
+        _GT(typeof(UnityEngine.EventSystems.RaycastResult)),
 
         _GT(typeof(MeshRenderer)),
-#if !UNITY_5_4_OR_NEWER
-        _GT(typeof(ParticleEmitter)),
-        _GT(typeof(ParticleRenderer)),
-        _GT(typeof(ParticleAnimator)), 
-#endif
 
         _GT(typeof(BoxCollider)),
         _GT(typeof(MeshCollider)),
-        _GT(typeof(SphereCollider)),        
+        _GT(typeof(SphereCollider)),
         _GT(typeof(CharacterController)),
         _GT(typeof(CapsuleCollider)),
-        
-        _GT(typeof(Animation)),        
-        _GT(typeof(AnimationClip)).SetBaseType(typeof(UnityEngine.Object)),        
+
+        _GT(typeof(Animation)),
+        _GT(typeof(AnimationClip)).SetBaseType(typeof(UnityEngine.Object)),
         _GT(typeof(AnimationState)),
         _GT(typeof(AnimationBlendMode)),
-        _GT(typeof(QueueMode)),  
+        _GT(typeof(QueueMode)),
         _GT(typeof(PlayMode)),
         _GT(typeof(WrapMode)),
 
         //_GT(typeof(QualitySettings)),
-        _GT(typeof(RenderSettings)),                                                   
-        _GT(typeof(BlendWeights)),           
-        _GT(typeof(RenderTexture)), 
-		_GT(typeof(Resources)),      
-		_GT(typeof(LuaProfiler)),
-          
+        _GT(typeof(RenderSettings)),
+        _GT(typeof(BlendWeights)),
+        _GT(typeof(RenderTexture)),
+        _GT(typeof(Resources)),
+        _GT(typeof(LuaProfiler)),
+         _GT(typeof(PlayerPrefs)),
+        _GT(typeof(RuntimePlatform)),
+
         //for LuaFramework
         _GT(typeof(RectTransform)),
-        _GT(typeof(Text)),
+        _GT(typeof(Button)),
+        _GT(typeof(ScrollRect)),
+        _GT(typeof(Scrollbar)),
+        _GT(typeof(Button.ButtonClickedEvent)),
+        _GT(typeof(Dropdown)),
+        _GT(typeof(Dropdown.DropdownEvent)),
+
+        _GT(typeof(InputField)),
+        _GT(typeof(Toggle)),
 
         _GT(typeof(Util)),
         _GT(typeof(AppConst)),
@@ -174,7 +140,65 @@ public static class CustomSettings
         _GT(typeof(TimerManager)),
         _GT(typeof(ThreadManager)),
         _GT(typeof(NetworkManager)),
-        _GT(typeof(ResourceManager)),		  
+        _GT(typeof(ResourceManager)),
+
+        _GT(typeof(ContentSizeFitter)),
+        _GT(typeof(GridLayoutGroup)),
+        _GT(typeof(TextMesh)),
+        _GT(typeof(Slider)),
+
+        _GT(typeof(LuaInjectionStation)),
+        _GT(typeof(InjectType)),
+        _GT(typeof(Debugger)).SetNameSpace(null),
+
+///================根据平台插件对应导出==========================================================================
+#if USING_DOTWEENING
+        _GT(typeof(DG.Tweening.DOTween)),
+        _GT(typeof(DG.Tweening.Tween)).SetBaseType(typeof(System.Object)).AddExtendType(typeof(DG.Tweening.TweenExtensions)),
+        _GT(typeof(DG.Tweening.Sequence)).AddExtendType(typeof(DG.Tweening.TweenSettingsExtensions)),
+        _GT(typeof(DG.Tweening.Tweener)).AddExtendType(typeof(DG.Tweening.TweenSettingsExtensions)),
+        _GT(typeof(DG.Tweening.LoopType)),
+        _GT(typeof(DG.Tweening.PathMode)),
+        _GT(typeof(DG.Tweening.PathType)),
+        _GT(typeof(DG.Tweening.RotateMode)),
+        _GT(typeof(DG.Tweening.ScrambleMode)),
+        _GT(typeof(DG.Tweening.Ease)),
+
+        _GT(typeof(Component)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(Transform)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(Material)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(Rigidbody)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(Camera)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(AudioSource)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(Text)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions46)),
+        _GT(typeof(Sprite)),
+        _GT(typeof(CanvasGroup)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions46)),
+
+        //_GT(typeof(Light)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        //_GT(typeof(LineRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        //_GT(typeof(TrailRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),    
+#else
+                                         
+        _GT(typeof(Component)),
+        _GT(typeof(Transform)),
+        _GT(typeof(Material)),
+        //_GT(typeof(Light)),
+        _GT(typeof(Rigidbody)),
+        _GT(typeof(Camera)),
+        _GT(typeof(AudioSource)),
+        //_GT(typeof(LineRenderer))
+        //_GT(typeof(TrailRenderer))
+#endif
+
+#if UNITY_5_3_OR_NEWER && !UNITY_5_6_OR_NEWER
+        _GT(typeof(UnityEngine.Experimental.Director.DirectorPlayer)),
+#endif
+
+#if !UNITY_5_4_OR_NEWER
+        _GT(typeof(ParticleEmitter)),
+        _GT(typeof(ParticleRenderer)),
+        _GT(typeof(ParticleAnimator)), 
+#endif	  
     };
 
     public static List<Type> dynamicList = new List<Type>()
