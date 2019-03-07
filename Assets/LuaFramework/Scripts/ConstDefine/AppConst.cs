@@ -19,10 +19,10 @@ namespace LuaFramework {
         /// </summary>
         public const bool UpdateMode = false;                       //更新模式-默认关闭 
         public const bool LuaByteMode = false;                       //Lua字节码模式-默认关闭 
-        public const bool LuaBundleMode = false;                    //Lua代码AssetBundle模式
+        public const bool LuaBundleMode = false;                    //Lua代码AssetBundle模式,此值为假时,ui预制将直接加载,方便即改即见
 
         public const int TimerInterval = 1;
-        public const int GameFrameRate = 30;                        //游戏帧频
+        public const int GameFrameRate = 60;                        //游戏帧频
 
         public const string AppName = "LuaFramework";               //应用程序名称
         public const string LuaTempDir = "Lua/";                    //临时目录

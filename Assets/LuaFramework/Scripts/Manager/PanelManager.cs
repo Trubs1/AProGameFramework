@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using LuaInterface;
 
+
 namespace LuaFramework
 {
     public class PanelManager : Manager
@@ -16,7 +17,12 @@ namespace LuaFramework
 
         public GameObject CreatePanelBySync(string panelName, LuaTable table)
         {
-            GameObject prefab = ResManager.LoadAssetSync<GameObject>("prefabs_ui_panels", panelName);
+            GameObject prefab;
+            if (AppConst.LuaBundleMode)
+                prefab = ResManager.LoadAssetSync<GameObject>("prefabs_ui_panels", panelName);
+            else
+                //Resources.LoadAssetAtPath被废弃了,而这个是UnityEditor下的,打包的时候会报错,但似乎并没有影响打包结果,暂时先这样吧
+                prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/Panels/"+ panelName + ".prefab", typeof(GameObject));
             if (prefab == null)
             {
                 Debug.LogError("~~~~CreatePanelSync faile::>> " + panelName + " " + prefab);
