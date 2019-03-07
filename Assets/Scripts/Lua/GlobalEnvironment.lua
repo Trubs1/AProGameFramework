@@ -2,5 +2,6 @@
 --- author:Trubs (WQ)
 --- date: 2019/03/05
 
+LOG = require("util.log");
 PanelsCfg = require("Common.PanelsCfg");
 PanelMgr = require("Managers.PanelManager");

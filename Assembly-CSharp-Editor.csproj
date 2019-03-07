@@ -84,15 +84,6 @@
     <Compile Include="Assets\LuaFramework\ToLua\Injection\Editor\ToluaInjectionBlackListPanel.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Injection\Editor\ToLuaInjectionHelper.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Injection\Editor\ToLuaText.cs" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
