@@ -248,20 +248,24 @@ using LuaFramework;
 using LuaInterface;
 using UObject = UnityEngine.Object;
 
-namespace LuaFramework {
-    public class ResourceManager : Manager {
+namespace LuaFramework
+{
+    public class ResourceManager : Manager
+    {
         private string[] m_Variants = { };
         private AssetBundleManifest manifest;
         private AssetBundle shared, assetbundle;
         private Dictionary<string, AssetBundle> bundles;
 
-        void Awake() {
+        void Awake()
+        {
         }
 
         /// <summary>
         /// 初始化
         /// </summary>
-        public void Initialize() {
+        public void Initialize()
+        {
             byte[] stream = null;
             string uri = string.Empty;
             bundles = new Dictionary<string, AssetBundle>();
@@ -272,36 +276,134 @@ namespace LuaFramework {
             manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
 
+        #region 同步操作 Sync>>
+        /// <summary>
+        /// 同步从Prefab创建Gameobject
+        /// </summary>
+        /// <param name="assetPath"></param>
+        /// <returns></returns>
+        public GameObject AllocObjectSync(string assetPath)
+        {
+            var prfab = LoadAssetSyncByPath<UObject>(assetPath);
+            if (prfab != null)
+                return GameObject.Instantiate(prfab) as GameObject;
+            Debug.LogError("资源不存在 assetPath:" + assetPath);
+            return null;
+        }
+        public GameObject AllocObjectSync(string assetPath, Vector3 initPos, Quaternion initRot)
+        {
+            var prfab = LoadAssetSyncByPath<UObject>(assetPath);
+            if (prfab != null)
+                return GameObject.Instantiate(prfab, initPos, initRot) as GameObject;
+            Debug.LogError("资源不存在 assetPath:" + assetPath);
+            return null;
+        }
+
+        public GameObject AllocObjectSync(string assetPath, Transform parent)
+        {
+            var prfab = LoadAssetSyncByPath<UObject>(assetPath);
+            if (prfab != null)
+                return GameObject.Instantiate(prfab, parent) as GameObject;
+            Debug.LogError("资源不存在 assetPath:" + assetPath);
+            return null;
+        }
+
+        /// <summary>
+        /// 同步从Prefab创建Gameobject
+        /// </summary>
+        /// <param name="abName"></param>
+        /// <param name="assetName"></param>
+        /// <returns></returns>
+        public GameObject AllocObjectSync(string abName, string assetName)
+        {
+            UObject obj = LoadPrefabSync(abName, assetName);
+            if (obj != null)
+                return GameObject.Instantiate(obj) as GameObject;
+            Debug.LogError("资源不存在 abName:" + abName + "assetName:" + assetName);
+            return null;
+        }
+
         /// <summary>
         /// 同步载入素材
         /// </summary>
-        public T LoadAssetSync<T>(string abname, string assetname) where T : UnityEngine.Object {
+        public T LoadAssetSync<T>(string abname, string assetname) where T : UnityEngine.Object
+        {
             abname = abname.ToLower();
             AssetBundle bundle = LoadAssetBundle(abname);
             return bundle.LoadAsset<T>(assetname);
         }
 
-        public void LoadPrefab(string abName, string[] assetNames, LuaFunction func) {
+        /// <summary>
+        /// 同步加载Prefab
+        /// </summary>
+        /// <param name="abName"></param>
+        /// <param name="assetNames"></param>
+        /// <returns></returns>
+        public UObject LoadPrefabSync(string abName, string assetNames)
+        {
+            UObject go = StartLoadAssetSync<UObject>(abName, assetNames);
+            return go;
+        }
+
+        /// <summary>
+        /// 同步载入素材入口
+        /// </summary>
+        public T StartLoadAssetSync<T>(string abname, string assetname) where T : UnityEngine.Object
+        {
+            AssetBundle bundle = LoadAssetBundle(abname);
+            return bundle.LoadAsset<T>(assetname);
+        }
+
+        /// <summary>
+        /// 通过完整路径加载预制体
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public UObject LoadPrefabSyncByPath(string path)
+        {
+            return LoadAssetSyncByPath<UObject>(path);
+        }
+        /// <summary>
+        /// 通过完整路径加载素材
+        /// </summary>
+        public T LoadAssetSyncByPath<T>(string path) where T : UnityEngine.Object
+        {
+            int index = path.LastIndexOf('/');
+            string assetname = path.Substring(index + 1);
+            string abname = path.Substring(0, index);
+            Util.Log("<color=yellow>~~~~ LoadAssetSyncByPath: </color>" + path + " " + assetname + " " + abname);
+            AssetBundle bundle = LoadAssetBundle(abname);
+            return bundle.LoadAsset<T>(assetname);
+        }
+
+        public void LoadPrefabSync(string abName, string[] assetNames, LuaFunction func)
+        {
             abName = abName.ToLower();
             List<UObject> result = new List<UObject>();
-            for (int i = 0; i < assetNames.Length; i++) {
+            for (int i = 0; i < assetNames.Length; i++)
+            {
                 UObject go = LoadAssetSync<UObject>(abName, assetNames[i]);
                 if (go != null) result.Add(go);
             }
             if (func != null) func.Call((object)result.ToArray());
         }
 
+
+
         /// <summary>
         /// 载入AssetBundle
         /// </summary>
         /// <param name="abname"></param>
         /// <returns></returns>
-        public AssetBundle LoadAssetBundle(string abname) {
-            if (!abname.EndsWith(AppConst.ExtName)) {
+        public AssetBundle LoadAssetBundle(string abname)
+        {
+            if (!abname.EndsWith(AppConst.ExtName))
+            {
                 abname += AppConst.ExtName;
             }
             AssetBundle bundle = null;
-            if (!bundles.ContainsKey(abname)) {
+            if (!bundles.ContainsKey(abname))
+            {
                 byte[] stream = null;
                 string uri = Util.DataPath + abname;
                 Debug.LogWarning("LoadFile::>> " + uri);
@@ -310,7 +412,9 @@ namespace LuaFramework {
                 stream = File.ReadAllBytes(uri);
                 bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
                 bundles.Add(abname, bundle);
-            } else {
+            }
+            else
+            {
                 bundles.TryGetValue(abname, out bundle);
             }
             return bundle;
@@ -320,8 +424,10 @@ namespace LuaFramework {
         /// 载入依赖
         /// </summary>
         /// <param name="name"></param>
-        void LoadDependencies(string name) {
-            if (manifest == null) {
+        void LoadDependencies(string name)
+        {
+            if (manifest == null)
+            {
                 Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
                 return;
             }
@@ -333,13 +439,15 @@ namespace LuaFramework {
                 dependencies[i] = RemapVariantName(dependencies[i]);
 
             // Record and load all dependencies.
-            for (int i = 0; i < dependencies.Length; i++) {
+            for (int i = 0; i < dependencies.Length; i++)
+            {
                 LoadAssetBundle(dependencies[i]);
             }
         }
 
         // Remaps the asset bundle name to the best fitting asset bundle variant.
-        string RemapVariantName(string assetBundleName) {
+        string RemapVariantName(string assetBundleName)
+        {
             string[] bundlesWithVariant = manifest.GetAllAssetBundlesWithVariant();
 
             // If the asset bundle doesn't have variant, simply return.
@@ -351,13 +459,15 @@ namespace LuaFramework {
             int bestFit = int.MaxValue;
             int bestFitIndex = -1;
             // Loop all the assetBundles with variant to find the best fit variant assetBundle.
-            for (int i = 0; i < bundlesWithVariant.Length; i++) {
+            for (int i = 0; i < bundlesWithVariant.Length; i++)
+            {
                 string[] curSplit = bundlesWithVariant[i].Split('.');
                 if (curSplit[0] != split[0])
                     continue;
 
                 int found = System.Array.IndexOf(m_Variants, curSplit[1]);
-                if (found != -1 && found < bestFit) {
+                if (found != -1 && found < bestFit)
+                {
                     bestFit = found;
                     bestFitIndex = i;
                 }
@@ -368,14 +478,26 @@ namespace LuaFramework {
                 return assetBundleName;
         }
 
+        #endregion <<同步操作 Sync
+
+
+
+        #region 异步操作 Async>>
+
+
+        #endregion <<异步操作 Async
+
+
         /// <summary>
         /// 销毁资源
         /// </summary>
-        void OnDestroy() {
+        void OnDestroy()
+        {
             if (shared != null) shared.Unload(true);
             if (manifest != null) manifest = null;
             Debug.Log("~ResourceManager was destroy!");
         }
+
     }
 }
 #endif
