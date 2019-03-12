@@ -2,8 +2,8 @@
 --- Author:Trubs (WQ)
 --- Date: 2019/03/05
 
-LOG = require("util.log");
+LOG = require("utils.log");
 Debug = LOG.Ndebug;
 PanelsCfg = require("Common.PanelsCfg");
 PanelMgr = require("Managers.PanelManager");
-LuaMsgMgr = require("util.LuaMsgMgr");
+LuaMsgMgr = require("utils.LuaMsgMgr");

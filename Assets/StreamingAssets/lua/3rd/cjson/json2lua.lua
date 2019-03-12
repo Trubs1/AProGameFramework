@@ -9,6 +9,6 @@
 local json = require "cjson"
 local util = require "cjson.util"
 
-local json_text = util.file_load(arg[1])
+local json_text = utils.file_load(arg[1])
 local t = json.decode(json_text)
-print(util.serialise_value(t))
+print(utils.serialise_value(t))

@@ -320,15 +320,6 @@
     <None Include="Assets\LuaFramework\ToLua\readme.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\LuaInjectionSkipPaths.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBlackList.txt" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>

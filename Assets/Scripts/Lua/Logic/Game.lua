@@ -165,7 +165,7 @@ end
 
 --测试pbc--
 function Game.test_pbc_func()
-    local path = Util.DataPath.."lua/3rd/pbc/addressbook.pb";
+    local path = utils.DataPath.."lua/3rd/pbc/addressbook.pb";
     log('io.open--->>>'..path);
 
     local addr = io.open(path, "rb")
@@ -187,7 +187,7 @@ end
 
 --pbc callback--
 function Game.OnPbcCall(data)
-    local path = Util.DataPath.."lua/3rd/pbc/addressbook.pb";
+    local path = utils.DataPath.."lua/3rd/pbc/addressbook.pb";
 
     local addr = io.open(path, "rb")
     local buffer = addr:read "*a"
@@ -204,8 +204,8 @@ end
 
 --测试cjson--
 function Game.test_cjson_func()
-    local path = Util.DataPath.."lua/3rd/cjson/example2.json";
-    local text = util.file_load(path);
+    local path = utils.DataPath.."lua/3rd/cjson/example2.json";
+    local text = utils.file_load(path);
     LuaHelper.OnJsonCallFunc(text, this.OnJsonCall);
 end
 

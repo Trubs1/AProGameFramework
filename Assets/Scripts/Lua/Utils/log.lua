@@ -4,7 +4,7 @@
 -- Author: Zaxbbun.Du
 --
 
-local pprint = require 'util.pprint'
+local pprint = require 'utils.pprint'
 
 pprint.defaults.show_all = true
 

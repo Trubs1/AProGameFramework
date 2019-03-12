@@ -7,7 +7,7 @@
 --- All rights reserved
 ---
 
-local LOG                            = require 'util.log'
+local LOG                            = require 'utils.log'
 local REG                            = require 'wrap.registry'
 local NET                            = require 'wrap.network.NetworkManager'
 

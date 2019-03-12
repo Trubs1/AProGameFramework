@@ -139,7 +139,7 @@ end
 
 --测试发送PBC--
 function PromptCtrl.TestSendPbc()
-    local path = Util.DataPath.."lua/3rd/pbc/addressbook.pb";
+    local path = utils.DataPath.."lua/3rd/pbc/addressbook.pb";
 
     local addr = io.open(path, "rb")
     local buffer = addr:read "*a"

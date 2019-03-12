@@ -53,14 +53,14 @@ function load_testdata()
 
     -- Data for 8bit raw <-> escaped octets tests
     data.octets_raw = gen_raw_octets()
-    data.octets_escaped = util.file_load("octets-escaped.dat")
+    data.octets_escaped = utils.file_load("octets-escaped.dat")
 
     -- Data for \uXXXX -> UTF-8 test
     data.utf16_escaped = gen_utf16_escaped()
 
     -- Load matching data for utf16_escaped
     local utf8_loaded
-    utf8_loaded, data.utf8_raw = pcall(util.file_load, "utf8.dat")
+    utf8_loaded, data.utf8_raw = pcall(utils.file_load, "utf8.dat")
     if not utf8_loaded then
         data.utf8_raw = "Failed to load utf8.dat - please run genutf8.pl"
     end
@@ -78,9 +78,9 @@ function load_testdata()
 end
 
 function test_decode_cycle(filename)
-    local obj1 = json.decode(util.file_load(filename))
+    local obj1 = json.decode(utils.file_load(filename))
     local obj2 = json.decode(json.encode(obj1))
-    return util.compare_values(obj1, obj2)
+    return utils.compare_values(obj1, obj2)
 end
 
 -- Set up data used in tests
@@ -406,14 +406,14 @@ local cjson_tests = {
 
 print(("==> Testing Lua CJSON version %s\n"):format(json._VERSION))
 
-util.run_test_group(cjson_tests)
+utils.run_test_group(cjson_tests)
 
 for _, filename in ipairs(arg) do
-    util.run_test("Decode cycle " .. filename, test_decode_cycle, { filename },
+    utils.run_test("Decode cycle " .. filename, test_decode_cycle, { filename },
                   true, { true })
 end
 
-local pass, total = util.run_test_summary()
+local pass, total = utils.run_test_summary()
 
 if pass == total then
     print("==> Summary: all tests succeeded")

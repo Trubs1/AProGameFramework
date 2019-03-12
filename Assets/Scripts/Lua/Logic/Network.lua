@@ -93,7 +93,7 @@ function Network.TestLoginPbc(buffer)
 	local protocal = buffer:ReadByte();
 	local data = buffer:ReadBuffer();
 
-    local path = Util.DataPath.."lua/3rd/pbc/addressbook.pb";
+    local path = utils.DataPath.."lua/3rd/pbc/addressbook.pb";
 
     local addr = io.open(path, "rb")
     local buffer = addr:read "*a"

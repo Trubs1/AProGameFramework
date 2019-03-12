@@ -8,7 +8,7 @@
 -- @brief 本地数据存取
 --
 
-local pprint = require 'util.pprint'
+local pprint = require 'utils.pprint'
 
 local filepath = nil
 local var = { }

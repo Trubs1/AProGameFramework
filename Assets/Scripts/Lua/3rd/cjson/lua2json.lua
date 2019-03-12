@@ -14,7 +14,7 @@ local env = {
     null = json.null
 }
 
-local t = util.run_script("data = " .. util.file_load(arg[1]), env)
+local t = utils.run_script("data = " .. utils.file_load(arg[1]), env)
 print(json.encode(t.data))
 
 -- vi:ai et sw=4 ts=4:

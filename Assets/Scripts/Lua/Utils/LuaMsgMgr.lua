@@ -23,7 +23,7 @@ function LuaMsgMgr:AddListener( str, func, aheadArg )
 	local funcKeyT = self.funcKeys[str]
 	if funcKeyT then
 		if funcKeyT[func] then
-			LuaFramework.Util.LogWarning("重复添加消息监听:"..str..debug.traceback())
+			LuaFramework.utils.LogWarning("重复添加消息监听:"..str..debug.traceback())
 			return 
 		end
 		funcKeyT[func] = GetMixTLength(funcKeyT) +1
