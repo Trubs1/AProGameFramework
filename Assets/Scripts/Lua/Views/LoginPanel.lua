@@ -1,6 +1,6 @@
---- description: 登录面板
---- author:Trubs (WQ)
---- date: 2019/03/05
+--- Description: 登录面板
+--- Author:Trubs (WQ)
+--- Date: 2019/03/05
 
 local LoginPanel = {}
 

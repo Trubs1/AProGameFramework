@@ -1,6 +1,6 @@
---- description: 纯lua层的消息管理器
---- author:Trubs (WQ)
---- date: 2018/06/26
+--- Description: 纯lua层的消息管理器
+--- Author:Trubs (WQ)
+--- Date: 2018/06/26
 --
 
 LuaMsgMgr = LuaMsgMgr or 

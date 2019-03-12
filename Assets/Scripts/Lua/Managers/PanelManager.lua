@@ -1,7 +1,7 @@
 --- Copyright (c) 2019 WangQiang(279980661@qq.com)
---- description: 面板管理器
---- author:Trubs (WQ)
---- date: 2019/03/05
+--- Description: 面板管理器
+--- Author:Trubs (WQ)
+--- Date: 2019/03/05
 
 local cPanelManager = LuaFramework.LuaHelper.GetPanelManager()
 
