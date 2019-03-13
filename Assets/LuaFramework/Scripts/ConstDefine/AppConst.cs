@@ -20,7 +20,7 @@ namespace LuaFramework {
         /// </summary>
         public const bool UpdateMode = false;                       //更新模式-默认关闭 
         public const bool LuaByteMode = false;                       //Lua字节码模式-默认关闭 
-        public const bool LuaBundleMode = false;                    //Lua代码AssetBundle模式,此值为假时,ui预制将直接加载,方便即改即见
+        public const bool LuaBundleMode = false;                    //Lua代码AssetBundle模式
 
         public const int TimerInterval = 1;
         public const int GameFrameRate = 60;                        //游戏帧频
@@ -43,8 +43,8 @@ namespace LuaFramework {
         }
 
         public static string[] luaDirs = {
-            FrameworkRoot + "/ToLua/Lua",
-            Application.dataPath + "/Scripts/Lua",
+            FrameworkRoot + "/ToLua/Lua",//框架 tolua lua文件目录
+            Application.dataPath + "/Scripts/Lua",//游戏 lua逻辑目录
         };
     }
 }

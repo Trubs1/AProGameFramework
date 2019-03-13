@@ -1,9 +1,9 @@
-///Copyright (c) 2019 WangQiang(279980661@qq.com)
-///description: Ãæ°å¹ÜÀíÆ÷
+ï»¿///Copyright (c) 2019 WangQiang(279980661@qq.com)
+///description: é¢æ¿ç®¡ç†å™¨
 ///author:Trubs (WQ)
 ///Date:2019/03/05
 
-#define DirectLoadResourceMode //Ö±½Ó¼ÓÔØ×ÊÔ´Ä£Ê½,uiÔ¤ÖÆµÈÎŞĞèbuild×ÊÔ´,¼´¸Ä¼´¼û  ÇĞ¼Ç:´ò°üµÄÊ±ºòĞèÒª½«´ËĞĞ×¢ÊÍ!!!
+#define DirectLoadResourceMode //ç›´æ¥åŠ è½½èµ„æºæ¨¡å¼,uié¢„åˆ¶ç­‰æ— éœ€buildèµ„æº,å³æ”¹å³è§
 
 using UnityEngine;
 using System.Collections;
@@ -21,8 +21,7 @@ namespace LuaFramework
         {
             GameObject prefab;
 
-#if UNITY_EDITOR && DirectLoadResourceMode
-            //Resources.LoadAssetAtPath±»·ÏÆúÁË,¶øÕâ¸öÊÇUnityEditorÏÂµÄ,´ò°üµÄÊ±ºò»á±¨´í,ÔİÊ±ÏÈÕâÑù°É
+#if UNITY_EDITOR && DirectLoadResourceMode//Resources.LoadAssetAtPathè¢«åºŸå¼ƒäº†,è€Œè¿™ä¸ªæ˜¯UnityEditorä¸‹çš„,æ‰“åŒ…çš„æ—¶å€™ä¼šæŠ¥é”™,æš‚æ—¶å…ˆè¿™æ ·å§,é€šè¿‡è¿™æ ·å­é¢„å¤„ç†å®Œç¾è§£å†³        
             prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/Panels/" + panelName + ".prefab", typeof(GameObject));
 #else
             prefab = ResManager.LoadAssetSync<GameObject>("prefabs_ui_panels", panelName);

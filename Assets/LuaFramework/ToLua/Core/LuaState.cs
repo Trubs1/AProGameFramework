@@ -30,6 +30,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
+using LuaFramework;
 
 namespace LuaInterface
 {
@@ -183,20 +184,16 @@ namespace LuaInterface
             if (!LuaFileUtils.Instance.beZip)
             {
 #if UNITY_EDITOR
-                if (!Directory.Exists(LuaConst.luaDir))
+                string[] luaDirs = AppConst.luaDirs;
+                foreach (string path in luaDirs)
                 {
-                    string msg = string.Format("luaDir path not exists: {0}, configer it in LuaConst.cs", LuaConst.luaDir);
-                    throw new LuaException(msg);
+                    if (!Directory.Exists(path))
+                    {
+                        string msg = string.Format("path not exists: {0}, configer it in AppConst.cs", path);
+                        throw new LuaException(msg);
+                    }
+                    AddSearchPath(path);
                 }
-
-                if (!Directory.Exists(LuaConst.toluaDir))
-                {
-                    string msg = string.Format("toluaDir path not exists: {0}, configer it in LuaConst.cs", LuaConst.toluaDir);
-                    throw new LuaException(msg);
-                }
-
-                AddSearchPath(LuaConst.toluaDir);
-                AddSearchPath(LuaConst.luaDir);
 #endif
                 if (LuaFileUtils.Instance.GetType() == typeof(LuaFileUtils))
                 {
