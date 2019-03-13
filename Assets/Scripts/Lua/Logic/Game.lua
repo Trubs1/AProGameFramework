@@ -34,10 +34,9 @@ end
 
 --初始化完成 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息--
 function Game.OnInitOK()
-    LOG.init('luaFramework', nil, 'debug')    
     print("<color=yellow>OnInit_ 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息:</color>",1)
     PanelMgr:Show(PanelsCfg.LoginPanel)
-    Debug("<color=yellow>~~~~OnInitOK_初始化完成:</color>")
+    Log("<color=yellow>~~~~OnInitOK_初始化完成:</color>")
 
     -- AppConst.SocketPort = 2012;
     -- AppConst.SocketAddress = "127.0.0.1";

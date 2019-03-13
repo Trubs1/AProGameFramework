@@ -55,17 +55,17 @@ namespace LuaFramework
             assetbundle = AssetBundle.LoadFromMemory(stream);
             manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
-            // Load AssetBundleManifest.
-            public void Initialize(string manifestName, Action initOK)
+        // Load AssetBundleManifest.
+        public void Initialize(string manifestName, Action initOK)
         {
-            byte[] stream = null;
-            string uri = string.Empty;
-            bundles = new Dictionary<string, AssetBundle>();
-            uri = Util.DataPath + AppConst.AssetDir;
-            if (!File.Exists(uri)) return;
-            stream = File.ReadAllBytes(uri);
-            assetbundle = AssetBundle.LoadFromMemory(stream);
-            manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+            //byte[] stream = null;
+            //string uri = string.Empty;
+            //bundles = new Dictionary<string, AssetBundle>();
+            //uri = Util.DataPath + AppConst.AssetDir;
+            //if (!File.Exists(uri)) return;
+            //stream = File.ReadAllBytes(uri);
+            //assetbundle = AssetBundle.LoadFromMemory(stream);
+            //manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
             m_BaseDownloadingURL = Util.GetRelativePath();
             LoadAsset<AssetBundleManifest>(manifestName, new string[] { "AssetBundleManifest" }, delegate (UObject[] objs)
@@ -75,7 +75,8 @@ namespace LuaFramework
                     m_AssetBundleManifest = objs[0] as AssetBundleManifest;
                     m_AllManifest = m_AssetBundleManifest.GetAllAssetBundles();
                 }
-                if (initOK != null) initOK();
+                initOK?.Invoke();//if (initOK != null) initOK();
+                Debug.Log(string.Format("<color=yellow>~~1243242:{0}</color>", 12));
             });
 
         }

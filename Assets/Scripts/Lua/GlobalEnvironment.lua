@@ -2,8 +2,9 @@
 --- Author:Trubs (WQ)
 --- Date: 2019/03/05
 
-LOG = require("utils.log");
-Debug = LOG.Ndebug;
+LOG = require("Utils.log");
+LOG.init('luaFramework', nil, 'debug')    
+Log = LOG.Ndebug;
 PanelsCfg = require("Common.PanelsCfg");
 PanelMgr = require("Managers.PanelManager");
 LuaMsgMgr = require("utils.LuaMsgMgr");

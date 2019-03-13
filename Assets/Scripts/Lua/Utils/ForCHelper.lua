@@ -4,7 +4,7 @@
 ForCHelper = {}
 
 local function TestFunc(T,msg)
-	LOG.Ndebug("<color=yellow>ForCHelper_TestFunc</color>",T,msg)
+	Log("<color=yellow>ForCHelper_TestFunc</color>",T,msg)
 	print("T.CurHp",T.curHp,T.id)
 end
 

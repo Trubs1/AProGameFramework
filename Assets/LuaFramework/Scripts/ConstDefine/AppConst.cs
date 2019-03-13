@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,8 +38,13 @@ namespace LuaFramework {
 
         public static string FrameworkRoot {
             get {
-                return Application.dataPath + "/" + AppName;
+                return Application.dataPath + "/LuaFramework";
             }
         }
+
+        public static string[] luaDirs = {
+            FrameworkRoot + "/ToLua/Lua",
+            Application.dataPath + "/Scripts/Lua",
+        };
     }
 }

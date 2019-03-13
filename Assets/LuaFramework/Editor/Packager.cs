@@ -193,7 +193,7 @@ public class Packager {
         string streamDir = Application.dataPath + "/" + AppConst.LuaTempDir;
         if (!Directory.Exists(streamDir)) Directory.CreateDirectory(streamDir);
 
-        string[] srcDirs = { CustomSettings.luaDir, CustomSettings.FrameworkPath + "/ToLua/Lua" };
+        string[] srcDirs = AppConst.luaDirs;
         for (int i = 0; i < srcDirs.Length; i++) {
             if (AppConst.LuaByteMode) {
                 string sourceDir = srcDirs[i];
@@ -285,9 +285,10 @@ public class Packager {
         if (!Directory.Exists(luaPath)) {
             Directory.CreateDirectory(luaPath); 
         }
-        string[] luaPaths = { AppDataPath + "//Scripts/Lua/", 
-                              AppDataPath + "/LuaFramework/Tolua/Lua/" };
+        //string[] luaPaths = { AppDataPath + "//Scripts/Lua/", 
+        //                      AppDataPath + "/LuaFramework/Tolua/Lua/" };
 
+        string[] luaPaths = AppConst.luaDirs;
         for (int i = 0; i < luaPaths.Length; i++) {
             paths.Clear(); files.Clear();
             string luaDataPath = luaPaths[i].ToLower();

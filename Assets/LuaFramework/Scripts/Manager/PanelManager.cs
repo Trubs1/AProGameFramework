@@ -3,6 +3,9 @@
 ///author:Trubs (WQ)
 ///Date:2019/03/05
 
+#define DirectLoadResourceMode //直接加载资源模式,ui预制等将直接加载,方便即改即见
+
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,11 +21,14 @@ namespace LuaFramework
         public GameObject CreatePanelBySync(string panelName, LuaTable table)
         {
             GameObject prefab;
-            if (AppConst.LuaBundleMode)
+
+#if !DirectLoadResourceMode
                 prefab = ResManager.LoadAssetSync<GameObject>("prefabs_ui_panels", panelName);
-            else
-                //Resources.LoadAssetAtPath被废弃了,而这个是UnityEditor下的,打包的时候会报错,但似乎并没有影响打包结果,暂时先这样吧
-                prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/Panels/"+ panelName + ".prefab", typeof(GameObject));
+#else
+            //Resources.LoadAssetAtPath被废弃了,而这个是UnityEditor下的,打包的时候会报错,但似乎并没有影响打包结果,暂时先这样吧
+            prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/Panels/" + panelName + ".prefab", typeof(GameObject));
+#endif
+
             if (prefab == null)
             {
                 Debug.LogError("~~~~CreatePanelSync faile::>> " + panelName + " " + prefab);
@@ -53,32 +59,6 @@ namespace LuaFramework
                 }
                 return parent;
             }
-        }
-
-        public void CreatePanel(string name, LuaFunction func = null)
-        {
-            string assetName = name + "Panel";
-            string abName = name.ToLower() + AppConst.ExtName;
-            if (Parent.Find(name) != null) return;
-
-#if ASYNC_MODE
-            ResManager.LoadPrefab(abName, assetName, delegate(UnityEngine.Object[] objs) {
-                if (objs.Length == 0) return;
-                GameObject prefab = objs[0] as GameObject;
-                if (prefab == null) return;
-
-                GameObject go = Instantiate(prefab) as GameObject;
-                go.name = assetName;
-                go.layer = LayerMask.NameToLayer("Default");
-                go.transform.SetParent(Parent);
-                go.transform.localScale = Vector3.one;
-                go.transform.localPosition = Vector3.zero;
-                go.AddComponent<LuaBehaviour>();
-
-                if (func != null) func.Call(go);
-                Debug.LogWarning("CreatePanel::>> " + name + " " + prefab);
-            });
-#endif
         }
 
         public void ClosePanel(string name)
