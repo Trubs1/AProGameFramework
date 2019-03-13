@@ -3,8 +3,7 @@
 ///author:Trubs (WQ)
 ///Date:2019/03/05
 
-#define DirectLoadResourceMode //直接加载资源模式,ui预制等将直接加载,方便即改即见
-
+#define DirectLoadResourceMode //直接加载资源模式,ui预制等无需build资源,即改即见  切记:打包的时候需要将此行注释!!!
 
 using UnityEngine;
 using System.Collections;
@@ -22,11 +21,11 @@ namespace LuaFramework
         {
             GameObject prefab;
 
-#if !DirectLoadResourceMode
-                prefab = ResManager.LoadAssetSync<GameObject>("prefabs_ui_panels", panelName);
-#else
-            //Resources.LoadAssetAtPath被废弃了,而这个是UnityEditor下的,打包的时候会报错,但似乎并没有影响打包结果,暂时先这样吧
+#if UNITY_EDITOR && DirectLoadResourceMode
+            //Resources.LoadAssetAtPath被废弃了,而这个是UnityEditor下的,打包的时候会报错,暂时先这样吧
             prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/Panels/" + panelName + ".prefab", typeof(GameObject));
+#else
+            prefab = ResManager.LoadAssetSync<GameObject>("prefabs_ui_panels", panelName);
 #endif
 
             if (prefab == null)
