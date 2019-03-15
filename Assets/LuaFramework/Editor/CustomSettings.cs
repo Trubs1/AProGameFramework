@@ -15,7 +15,7 @@ public static class CustomSettings
 {
     public static string FrameworkPath = AppConst.FrameworkRoot;
     public static string saveDir = FrameworkPath + "/ToLua/Source/Generate/";
-    public static string luaDir = FrameworkPath + "/Lua/";
+    public static string luaDir = FrameworkPath + "/Scripts/Lua/";
     public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
 	public static string baseLuaDir = FrameworkPath + "/ToLua/Lua";
 	public static string injectionFilesPath = Application.dataPath + "/ToLua/Injection/";

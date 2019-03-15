@@ -72,7 +72,7 @@ namespace LuaFramework {
         void InitLuaPath() {
             if (AppConst.DebugMode) {
                 string rootPath = AppConst.FrameworkRoot;
-                lua.AddSearchPath(rootPath + "/Lua");
+                lua.AddSearchPath(rootPath + "/Scripts/Lua");
                 lua.AddSearchPath(rootPath + "/ToLua/Lua");
             } else {
                 lua.AddSearchPath(Util.DataPath + "lua");
