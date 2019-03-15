@@ -6,12 +6,6 @@ using System.Collections.Generic;
 
 namespace LuaFramework {
     public class AppConst {
-        public const bool DebugMode = false;                       //调试模式-用于内部测试
-        /// <summary>
-        /// 如果想删掉框架自带的例子，那这个例子模式必须要
-        /// 关闭，否则会出现一些错误。
-        /// </summary>
-        public const bool ExampleMode = false;                       //例子模式 
 
         /// <summary>
         /// 如果开启更新模式，前提必须启动框架自带服务器端。
@@ -19,8 +13,8 @@ namespace LuaFramework {
         /// 复制到自己的Webserver上面，并修改下面的WebUrl。
         /// </summary>
         public const bool UpdateMode = false;                       //更新模式-默认关闭 
-        public const bool LuaByteMode = true;                       //Lua字节码模式-默认关闭 
-        public const bool LuaBundleMode = true;                    //Lua代码AssetBundle模式
+        public const bool LuaByteMode = false;                       //Lua字节码模式-默认关闭 
+        public const bool LuaBundleMode = false;                    //Lua代码AssetBundle模式
 
         public const int TimerInterval = 1;
         public const int GameFrameRate = 60;                        //游戏帧频
@@ -36,6 +30,8 @@ namespace LuaFramework {
         public static int SocketPort = 0;                           //Socket服务器端口
         public static string SocketAddress = string.Empty;          //Socket服务器地址
 
+
+
         public static string FrameworkRoot {
             get {
                 return Application.dataPath + "/LuaFramework";
@@ -46,5 +42,13 @@ namespace LuaFramework {
             FrameworkRoot + "/ToLua/Lua",//框架 tolua lua文件目录
             Application.dataPath + "/Scripts/Lua",//游戏 lua逻辑目录
         };
+
+
+        public const bool DebugMode = false;                       //调试模式-用于内部测试
+        /// <summary>
+        /// 如果想删掉框架自带的例子，那这个例子模式必须要
+        /// 关闭，否则会出现一些错误。
+        /// </summary>
+        public const bool ExampleMode = false;                       //例子模式 
     }
 }

@@ -3,6 +3,14 @@
 --- Author:Trubs (WQ)
 --- Date: 2019/03/05
 
+
+--[=[
+未完成内容:
+	监视:监视每个面板的情况,记录状态
+	使用频率:频率等级高的,考虑不销毁
+
+]=]
+
 local cPanelManager = LuaFramework.LuaHelper.GetPanelManager()
 
 PanelManager = {

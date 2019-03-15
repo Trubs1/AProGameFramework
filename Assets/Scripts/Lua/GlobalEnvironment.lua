@@ -3,7 +3,7 @@
 --- Date: 2019/03/05
 
 LOG = require("Utils.log");
-LOG.init('luaFramework', nil, 'debug')    
+LOG.init('luaFramework', nil, 'debug');
 Log = LOG.Ndebug;
 PanelsCfg = require("Common.PanelsCfg");
 PanelMgr = require("Managers.PanelManager");

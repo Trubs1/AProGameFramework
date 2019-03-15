@@ -21,16 +21,16 @@ function LoginPanel.New(target)
 end
 
 function LoginPanel:Init()
-	print("~~~~Init",self.loginBtn)
+	Log("~~~~Init",self.loginBtn)
 	self.loginBtn.onClick:AddListener(function ()
-			print("~~~~谁点我?")
+			Log("~~~~谁点我?")
 			self.titleTxt.text = "Loading .. ."
 			self.titleBgImg.color = Color.yellow
 		end)
 end
 
 function LoginPanel:Show()
-	print("~~~~ LoginPanel:Show")
+	Log("~~~~ LoginPanel:Show")
 	self.gameObject:SetActive(true);
 end
 
