@@ -614,7 +614,7 @@ namespace LuaInterface
 
             if (buffer == null)
             {
-                string error = string.Format("cannot open {0}: No such file or directory", fileName);
+                string error = string.Format("cannot open {0}: No such file or directory 请重新build对应平台资源", fileName);
                 error += LuaFileUtils.Instance.FindFileError(fileName);
                 throw new LuaException(error);
             }
