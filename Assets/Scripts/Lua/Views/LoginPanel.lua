@@ -21,9 +21,9 @@ function LoginPanel.New(target)
 end
 
 function LoginPanel:Init()
-	Log("~~~~Init",self.loginBtn)
+	Log("~~~~ LoginPanel:Init",self.loginBtn)
 	self.loginBtn.onClick:AddListener(function ()
-			Log("~~~~谁点我?")
+		Log("<color=yellow>点我干啥?:</color>",self)
 			self.titleTxt.text = "Loading .. ."
 			self.titleBgImg.color = Color.yellow
 		end)

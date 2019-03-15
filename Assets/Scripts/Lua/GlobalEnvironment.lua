@@ -8,3 +8,22 @@ Log = LOG.Ndebug;
 PanelsCfg = require("Common.PanelsCfg");
 PanelMgr = require("Managers.PanelManager");
 LuaMsgMgr = require("utils.LuaMsgMgr");
+
+
+Util = LuaFramework.Util;
+AppConst = LuaFramework.AppConst;
+LuaHelper = LuaFramework.LuaHelper;
+ByteBuffer = LuaFramework.ByteBuffer;
+
+ResMgr = LuaHelper.GetResManager();
+SoundMgr = LuaHelper.GetSoundManager();
+NetworkMgr = LuaHelper.GetNetManager();
+
+WWW = UnityEngine.WWW;
+GameObject = UnityEngine.GameObject;
+
+-- require("Common.Protocal");
+-- --当前使用的协议类型--
+-- TestProtoType = ProtocalType.BINARY;
+
+

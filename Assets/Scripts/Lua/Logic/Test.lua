@@ -9,41 +9,28 @@ local util = require "3rd/cjson/util"
 local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
-
-require("GlobalEnvironment")
-
 require "Logic/LuaClass"
-require "Logic/CtrlManager"
-require "Common/functions"
-require "Controller/PromptCtrl"
+
 
 --管理器--
-Game = {};
-local this = Game;
+Test = {};
+local this = Test;
 
 local game; 
 local transform;
 local gameObject;
 local WWW = UnityEngine.WWW;
 
-function Game.InitViewPanels()
-	for i = 1, #PanelNames do
-		require ("View/"..tostring(PanelNames[i]))
-	end
-end
 
 --初始化完成 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息--
-function Game.OnInitOK()
-    print("<color=yellow>OnInit_ 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息:</color>",1)
-    PanelMgr:Show(PanelsCfg.LoginPanel)
-    Log("<color=yellow>~~~~OnInitOK_初始化完成:</color>")
+function Test.OnInitOK()
+    -- print("<color=yellow>OnInit_ 游戏框架(大部分C#+少许lua 基础)，发送链接服务器信息:</color>",1)
+    -- PanelMgr:Show(PanelsCfg.LoginPanel)
+    -- Log("<color=yellow>~~~~OnInitOK_初始化完成:</color>")
 
     -- AppConst.SocketPort = 2012;
     -- AppConst.SocketAddress = "127.0.0.1";
-    -- networkMgr:SendConnect();
-
-    -- --注册LuaView--
-    -- this.InitViewPanels();
+    -- NetworkMgr:SendConnect();
 
     -- this.test_class_func();
     -- this.test_pblua_func();
@@ -52,28 +39,22 @@ function Game.OnInitOK()
     -- this.test_lpeg_func();
     -- this.test_sproto_func();
     -- coroutine.start(this.test_coroutine);
-
-    -- CtrlManager.Init();
-    -- local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
-    -- if ctrl ~= nil and AppConst.ExampleMode == 1 then
-    --     ctrl:Awake();
-    -- end
 end
 
 --测试协同--
-function Game.test_coroutine()    
-    logWarn("1111");
+function Test.test_coroutine()    
+    Log("1111");
     coroutine.wait(1);	
-    logWarn("2222");
+    Log("2222");
 	
     local www = WWW("http://bbs.ulua.org/readme.txt");
     coroutine.www(www);
-    logWarn(www.text);    	
+    Log(www.text);    	
 end
 
 --测试sproto--
-function Game.test_sproto_func()
-    logWarn("test_sproto_func-------->>");
+function Test.test_sproto_func()
+    Log("test_sproto_func-------->>");
     local sp = sproto.parse [[
     .Person {
         name 0 : string
@@ -128,8 +109,8 @@ function Game.test_sproto_func()
 end
 
 --测试lpeg--
-function Game.test_lpeg_func()
-	logWarn("test_lpeg_func-------->>");
+function Test.test_lpeg_func()
+	Log("test_lpeg_func-------->>");
 	-- matches a word followed by end-of-string
 	local p = lpeg.R"az"^1 * -1
 
@@ -139,12 +120,12 @@ function Game.test_lpeg_func()
 end
 
 --测试lua类--
-function Game.test_class_func()
+function Test.test_class_func()
     LuaClass:New(10, 20):test();
 end
 
 --测试pblua--
-function Game.test_pblua_func()
+function Test.test_pblua_func()
     local login = login_pb.LoginRequest();
     login.id = 2000;
     login.name = 'game';
@@ -155,7 +136,7 @@ function Game.test_pblua_func()
 end
 
 --pblua callback--
-function Game.OnPbluaCall(data)
+function Test.OnPbluaCall(data)
     local msg = login_pb.LoginRequest();
     msg:ParseFromString(data);
     print(msg);
@@ -163,9 +144,9 @@ function Game.OnPbluaCall(data)
 end
 
 --测试pbc--
-function Game.test_pbc_func()
+function Test.test_pbc_func()
     local path = utils.DataPath.."lua/3rd/pbc/addressbook.pb";
-    log('io.open--->>>'..path);
+    Log('io.open--->>>'..path);
 
     local addr = io.open(path, "rb")
     local buffer = addr:read "*a"
@@ -185,7 +166,7 @@ function Game.test_pbc_func()
 end
 
 --pbc callback--
-function Game.OnPbcCall(data)
+function Test.OnPbcCall(data)
     local path = utils.DataPath.."lua/3rd/pbc/addressbook.pb";
 
     local addr = io.open(path, "rb")
@@ -202,19 +183,19 @@ function Game.OnPbcCall(data)
 end
 
 --测试cjson--
-function Game.test_cjson_func()
+function Test.test_cjson_func()
     local path = utils.DataPath.."lua/3rd/cjson/example2.json";
     local text = utils.file_load(path);
     LuaHelper.OnJsonCallFunc(text, this.OnJsonCall);
 end
 
 --cjson callback--
-function Game.OnJsonCall(data)
+function Test.OnJsonCall(data)
     local obj = json.decode(data);
     print(obj['menu']['id']);
 end
 
 --销毁--
-function Game.OnDestroy()
-	--logWarn('OnDestroy--->>>');
+function Test.OnDestroy()
+	--Log('OnDestroy--->>>');
 end

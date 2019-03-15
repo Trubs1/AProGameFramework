@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Assets\LuaFramework\Editor\CustomSettings.cs" />
     <Compile Include="Assets\LuaFramework\Editor\Packager.cs" />
-    <Compile Include="Assets\LuaFramework\Examples\Editor\WelcomeScreen.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_EventObject.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_LuaConstructor.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_LuaField.cs" />

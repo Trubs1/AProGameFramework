@@ -11,6 +11,10 @@ namespace LuaFramework {
 
         // Use this for initialization
         void Awake() {
+        }
+
+        public void InitStart() {
+            if (lua != null) Close();//为了重启lua虚拟机
             loader = new LuaLoader();
             lua = new LuaState();
             this.OpenLibs();
@@ -19,9 +23,8 @@ namespace LuaFramework {
             LuaBinder.Bind(lua);
             DelegateFactory.Init();
             LuaCoroutine.Register(lua, this);
-        }
 
-        public void InitStart() {
+
             InitLuaPath();
             InitLuaBundle();
             this.lua.Start();    //启动LUAVM
@@ -45,12 +48,12 @@ namespace LuaFramework {
         }
 
         void StartMain() {
-            lua.DoFile("Main.lua");
+            lua.DoFile("Main.lua");//第一次访问Lua层,初始化,布置全局变量
 
-            LuaFunction main = lua.GetFunction("Main");
-            main.Call();
-            main.Dispose();
-            main = null;    
+            //LuaFunction main = lua.GetFunction("Main");
+            //main.Call();//第一次访问Lua层,初始化,布置全局变量
+            //main.Dispose();
+            //main = null;
         }
         
         /// <summary>
@@ -111,6 +114,24 @@ namespace LuaFramework {
                 return func.LazyCall(args);
             }
             return null;
+        }
+
+        public void CallFunction(string funcName, string module = null)
+        {
+            LuaFunction func = lua.GetFunction(funcName);
+            if(null == func && null != module)
+            {
+                lua.DoFile(module);
+                func = lua.GetFunction(funcName);
+            }
+            if(null == func)
+            {
+                Debug.LogError("当前Lua模块没有此方法"+ funcName+ "  module:" + module);
+                return;
+            }
+            func.Call();
+            func.Dispose();
+            func = null;
         }
 
         public void LuaGC() {

@@ -86,7 +86,7 @@ local function file_logger(name, level)
     end
 end
 
-local function log(level, msg)
+local function Log(level, msg)
     for _, logger in pairs(loggers) do
         logger(level, msg)
     end
@@ -143,7 +143,7 @@ LOG = setmetatable(LOG,{
             else
                 msg = string_format('[%s] %s', date('%m-%d %H:%M:%S'), table.concat(format_args(fmt, ...)))
             end
-            log(level, msg)
+            Log(level, msg)
         end
     end
 })
