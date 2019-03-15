@@ -219,18 +219,17 @@ namespace LuaFramework {
         /// 资源初始化结束
         /// </summary>
         public void OnResourceInited() {
-            ResManager.Initialize();
-            this.OnInitialize();
+            //ResManager.Initialize();
+            //this.OnInitialize();
 
-            //facade.SendMessageCommand(NotiConst.UPDATE_EXTRACT, "Resource initializing");
-            //Debug.Log(string.Format("<color=yellow>~~资源初始化结束 OnResourceInited:{0}</color>", 1));
-            //ResManager.Initialize(AppConst.AssetDir, delegate ()
-            //{
-            //    Debug.Log("<color=red>********initialized********</color>");
-            //    this.OnInitialize();
-            //    facade.SendMessageCommand(NotiConst.UPDATE_EXTRACT, "Resource initialized");
-            //});
-            Debug.Log(string.Format("<color=yellow>22 ~~资源初始化结束 OnResourceInited:{0}</color>", 222));
+            facade.SendMessageCommand(NotiConst.UPDATE_EXTRACT, "Resource initializing");
+            Debug.Log(string.Format("<color=yellow>~~资源初始化结束 OnResourceInited:{0}</color>", 111));
+            ResManager.Initialize(AppConst.AssetDir, delegate ()
+            {
+                Debug.Log(string.Format("<color=yellow>22 ~~资源初始化结束 OnResourceInited:{0}</color>", 222));
+                this.OnInitialize();
+                facade.SendMessageCommand(NotiConst.UPDATE_EXTRACT, "Resource initialized");
+            });
         }
 
         void OnInitialize() {

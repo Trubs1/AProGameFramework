@@ -23,11 +23,7 @@ namespace LuaFramework
     public class ResourceManager : Manager
     {
         private string[] m_Variants = { };
-        private AssetBundleManifest manifest;
-        private AssetBundle shared, assetbundle;
-        private Dictionary<string, AssetBundle> bundles;
-
-
+        private Dictionary<string, AssetBundle> bundles = new Dictionary<string, AssetBundle>();
 
         string m_BaseDownloadingURL = "";
         string[] m_AllManifest = null;
@@ -44,17 +40,6 @@ namespace LuaFramework
             public Action<UObject[]> sharpFunc;
         }
 
-        public void Initialize()
-        {
-            byte[] stream = null;
-            string uri = string.Empty;
-            bundles = new Dictionary<string, AssetBundle>();
-            uri = Util.DataPath + AppConst.AssetDir;
-            if (!File.Exists(uri)) return;
-            stream = File.ReadAllBytes(uri);
-            assetbundle = AssetBundle.LoadFromMemory(stream);
-            manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
-        }
         // Load AssetBundleManifest.
         public void Initialize(string manifestName, Action initOK)
         {
@@ -76,7 +61,6 @@ namespace LuaFramework
                     m_AllManifest = m_AssetBundleManifest.GetAllAssetBundles();
                 }
                 initOK?.Invoke();//if (initOK != null) initOK();
-                Debug.Log(string.Format("<color=yellow>~~1243242:{0}</color>", 12));
             });
 
         }
@@ -231,13 +215,13 @@ namespace LuaFramework
         /// <param name="name"></param>
         void LoadDependencies(string name)
         {
-            if (manifest == null)
+            if (m_AssetBundleManifest == null)
             {
                 Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
                 return;
             }
             // Get dependecies from the AssetBundleManifest object..
-            string[] dependencies = manifest.GetAllDependencies(name);
+            string[] dependencies = m_AssetBundleManifest.GetAllDependencies(name);
             if (dependencies.Length == 0) return;
 
             for (int i = 0; i < dependencies.Length; i++)
@@ -253,7 +237,7 @@ namespace LuaFramework
         // Remaps the asset bundle name to the best fitting asset bundle variant.
         string RemapVariantName(string assetBundleName)
         {
-            string[] bundlesWithVariant = manifest.GetAllAssetBundlesWithVariant();
+            string[] bundlesWithVariant = m_AssetBundleManifest.GetAllAssetBundlesWithVariant();
 
             // If the asset bundle doesn't have variant, simply return.
             if (System.Array.IndexOf(bundlesWithVariant, assetBundleName) < 0)
@@ -524,8 +508,7 @@ namespace LuaFramework
         /// </summary>
         void OnDestroy()
         {
-            if (shared != null) shared.Unload(true);
-            if (manifest != null) manifest = null;
+            if (m_AssetBundleManifest != null) m_AssetBundleManifest = null;
             Debug.Log("~ResourceManager was destroy!");
         }
 

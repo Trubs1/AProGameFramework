@@ -25,19 +25,26 @@ namespace LuaFramework {
         }
 
         /// <summary>
-        /// 添加打入Lua代码的AssetBundle
+        /// 添加打入Lua代码的AssetBundle //以前是枚举路径,然后这里拼接(舍弃)
         /// </summary>
         /// <param name="bundle"></param>
-        public void AddBundle(string bundleName) {
-            string url = Util.DataPath + bundleName.ToLower();
-            if (File.Exists(url)) {
-                var bytes = File.ReadAllBytes(url);
-                AssetBundle bundle = AssetBundle.LoadFromMemory(bytes);
-                if (bundle != null)
+        public void AddBundle(string bundle_path)
+        {
+            AssetBundle bundle = AssetBundle.LoadFromFile(bundle_path);
+            if (bundle != null)
+            {
+                bundle_path = bundle_path.Replace(".unity3d", "");
+                int pos = bundle_path.LastIndexOf('/');
+                if (pos < 0)
                 {
-                    bundleName = bundleName.Replace("lua/", "").Replace(".unity3d", "");
-                    base.AddSearchBundle(bundleName.ToLower(), bundle);
+                    pos = bundle_path.LastIndexOf('\\');
                 }
+
+                if (pos > 0)
+                {
+                    bundle_path = bundle_path.Substring(pos + 1);
+                }
+                base.AddSearchBundle(bundle_path.ToLower(), bundle);
             }
         }
 

@@ -55,7 +55,6 @@ namespace LuaFramework
 
         public void Initiate(LuaTable table)
         {
-            Debug.Log(string.Format("<color=yellow>初始化luaBehaviour:{0}</color>", table));
             table_ = table;
             InitCompnts();
             table_["transform"] = transform;
