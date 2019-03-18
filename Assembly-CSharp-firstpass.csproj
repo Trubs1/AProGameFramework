@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\MiniJSON\MiniJSON.cs" />
     <Compile Include="Assets\Plugins\Octodiff\Core\Adler32RollingChecksum.cs" />
     <Compile Include="Assets\Plugins\Octodiff\Core\AggregateCopyOperationsDecorator.cs" />
     <Compile Include="Assets\Plugins\Octodiff\Core\BinaryDeltaReader.cs" />
