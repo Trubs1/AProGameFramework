@@ -90,6 +90,12 @@
     <Compile Include="Assets\Plugins\Octodiff\Diagnostics\NullProgressReporter.cs" />
     <Compile Include="Assets\Plugins\Octodiff\Properties\AssemblyInfo.cs" />
     <Compile Include="Assets\Plugins\Octodiff\Util\Helper.cs" />
+    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
+    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\Reporter.cs" />
+    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\ReporterGUI.cs" />
+    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
+    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
+    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
     <Compile Include="Assets\Plugins\UnityZip\Assets\Plugins\Zip.cs" />
     <None Include="Assets\Plugins\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\UnityZip\PluginsCode\iOS\ZipArchive\AUTHORS.txt" />
