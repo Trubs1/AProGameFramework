@@ -3555,3 +3555,7 @@ Temp/
 Library/
 Assets/StreamingAssets/
 obj/
+Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_EventSystems_EventTriggerWrap.cs.meta
+Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_EventSystems_EventTriggerWrap.cs
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_LuaEventTriggerWrap.cs.meta
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_LuaEventTriggerWrap.cs

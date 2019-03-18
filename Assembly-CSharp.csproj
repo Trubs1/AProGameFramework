@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\LuaFramework\Scripts\Common\LuaBehaviour.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Common\LuaEventTrigger.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Common\LuaLoader.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\ConstDefine\AppConst.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\ConstDefine\ManagerName.cs" />
@@ -93,11 +94,13 @@
     <Compile Include="Assets\LuaFramework\Scripts\Network\ByteBuffer.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Network\Converter.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Network\Protocal.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Network\Rsa.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Network\SocketClient.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\GameObjectPool.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\ObjectPool.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\TestObjectClass.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Utility\LuaHelper.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Utility\LuaTimerHelper.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Utility\Util.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\View\AppView.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\BaseType\LuaInterface_EventObjectWrap.cs" />
@@ -218,6 +221,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ByteBufferWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_GameManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaBehaviourWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaEventTriggerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaHelperWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_NetworkManagerWrap.cs" />
@@ -258,6 +262,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Events_UnityEventWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_AbstractEventDataWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_BaseEventDataWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_EventTriggerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_PointerEventDataWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_RaycastResultWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_UIBehaviourWrap.cs" />
@@ -908,6 +913,12 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{94DECDCE-FA4E-DC20-6DEB-C3B18562FF1E}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
