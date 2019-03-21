@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main.unity
     guid: 75eee5e7009aba84192cfcdff8590f2a
+  - enabled: 1
+    path: Assets/Plugins/FieldOfViewRendererPro/Scenes/Demo.unity
+    guid: 3c261706b9cc25242ad14eeda9008e47
   m_configObjects: {}

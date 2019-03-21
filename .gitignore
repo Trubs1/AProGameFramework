@@ -3559,3 +3559,5 @@ Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_EventSystems_EventTriggerW
 Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_EventSystems_EventTriggerWrap.cs
 Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_LuaEventTriggerWrap.cs.meta
 Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_LuaEventTriggerWrap.cs
+Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_SceneManagement_SceneManagerWrap.cs.meta
+Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_SceneManagement_SceneManagerWrap.cs

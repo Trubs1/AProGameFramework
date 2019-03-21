@@ -122,6 +122,7 @@ public static class CustomSettings
         _GT(typeof(Button.ButtonClickedEvent)),
         _GT(typeof(Dropdown)),
         _GT(typeof(Dropdown.DropdownEvent)),
+        _GT(typeof(UnityEngine.SceneManagement.SceneManager)),
 
         _GT(typeof(InputField)),
         _GT(typeof(Toggle)),
