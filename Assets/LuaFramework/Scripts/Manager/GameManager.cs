@@ -119,8 +119,8 @@ namespace LuaFramework {
             string url = AppConst.WebUrl;
             string message = string.Empty;
             string random = DateTime.Now.ToString("yyyymmddhhmmss");
-            string listUrl = url + "files.txt?v=" + random;
-            Debug.LogWarning("LoadUpdate---->>>" + listUrl);
+            string listUrl = url + "files.txt?v=" + random;//?代表此链接后面有参数,参数名称自己约定,加一个随机数是为了防止读到了缓存
+            Debug.LogWarning("LoadUpdate---->>>" + listUrl);//LoadUpdate---->>>http://192.168.21.148/StreamingAssets/files.txt?v=20190121040116
 
             WWW www = new WWW(listUrl); yield return www;
             if (www.error != null) {
@@ -178,6 +178,7 @@ namespace LuaFramework {
 
         void OnUpdateFailed(string file) {
             string message = "更新失败!>" + file;
+            Debug.LogError(message);
             facade.SendMessageCommand(NotiConst.UPDATE_MESSAGE, message);
         }
 
@@ -204,14 +205,16 @@ namespace LuaFramework {
         /// 线程完成
         /// </summary>
         /// <param name="data"></param>
-        void OnThreadCompleted(NotiData data) {
-            switch (data.evName) {
+        void OnThreadCompleted(NotiData data)
+        {
+            switch (data.evName)
+            {
                 case NotiConst.UPDATE_EXTRACT:  //解压一个完成
-                //
-                break;
+                                                //
+                    break;
                 case NotiConst.UPDATE_DOWNLOAD: //下载一个完成
-                downloadFiles.Add(data.evParam.ToString());
-                break;
+                    downloadFiles.Add(data.evParam.ToString());
+                    break;
             }
         }
 
@@ -219,9 +222,6 @@ namespace LuaFramework {
         /// 资源初始化结束
         /// </summary>
         public void OnResourceInited() {
-            //ResManager.Initialize();
-            //this.OnInitialize();
-
             facade.SendMessageCommand(NotiConst.UPDATE_EXTRACT, "Resource initializing");
             Debug.Log(string.Format("<color=yellow>~~资源初始化结束 OnResourceInited:{0}</color>", 111));
             ResManager.Initialize(AppConst.AssetDir, delegate ()

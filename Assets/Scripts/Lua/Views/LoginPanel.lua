@@ -38,7 +38,7 @@ end
 function LoginPanel:OnLogin()
     coroutine.start(
         function()
-	        coroutine.wait(1);
+	        --coroutine.wait(1);
 	        Log("<color=yellow>开始加载场景::</color>","Demo");
 			UnityEngine.SceneManagement.SceneManager.LoadScene("Demo");		
         end);
