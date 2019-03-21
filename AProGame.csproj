@@ -8,11 +8,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
-    <ProjectGuid>{94DECDCE-FA4E-DC20-6DEB-C3B18562FF1E}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectGuid>{AC336DC8-E08C-9ED8-05ED-3CF137703D91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -47,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectType>GamePlugins:3</UnityProjectType>
+    <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2018.3.5f1</UnityVersion>
   </PropertyGroup>
@@ -60,56 +61,271 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\FieldOfViewRendererPro\Scripts\DrawHelper.cs" />
-    <Compile Include="Assets\Plugins\FieldOfViewRendererPro\Scripts\Eye.cs" />
-    <Compile Include="Assets\Plugins\FieldOfViewRendererPro\Scripts\FuncTest.cs" />
-    <Compile Include="Assets\Plugins\FieldOfViewRendererPro\Scripts\MeshSectorDrawer.cs" />
-    <Compile Include="Assets\Plugins\FieldOfViewRendererPro\Scripts\Sector.cs" />
-    <Compile Include="Assets\Plugins\MiniJSON\MiniJSON.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\Adler32RollingChecksum.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\AggregateCopyOperationsDecorator.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\BinaryDeltaReader.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\BinaryDeltaWriter.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\BinaryFormat.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\ChunkSignature.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\ChunkSignatureChecksumComparer.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\CompatibilityException.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\CorruptFileFormatException.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\DataRange.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\DeltaApplier.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\DeltaBuilder.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\DeltaStatistics.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\HashAlgorithmWrapper.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\IDeltaReader.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\IDeltaWriter.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\IHashAlgorithm.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\IRollingChecksum.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\ISignatureReader.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\ISignatureWriter.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\Signature.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\SignatureBuilder.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\SignatureReader.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\SupportedAlgorithms.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Core\UsageException.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Diagnostics\ConsoleProgressReporter.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Diagnostics\IProgressReporter.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Diagnostics\NullProgressReporter.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Properties\AssemblyInfo.cs" />
-    <Compile Include="Assets\Plugins\Octodiff\Util\Helper.cs" />
-    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\MultiKeyDictionary.cs" />
-    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\Reporter.cs" />
-    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\ReporterGUI.cs" />
-    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\ReporterMessageReceiver.cs" />
-    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\Test\Rotate.cs" />
-    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\Test\TestReporter.cs" />
-    <Compile Include="Assets\Plugins\UnityZip\Assets\Plugins\Zip.cs" />
-    <None Include="Assets\Plugins\DOTween\DOTween43.xml" />
-    <None Include="Assets\Plugins\FieldOfViewRendererPro\Shaders\FieldOfViewRenderer.shader" />
-    <None Include="Assets\Plugins\UnityZip\PluginsCode\iOS\ZipArchive\AUTHORS.txt" />
-    <None Include="Assets\Plugins\DOTween\DOTween46.xml" />
-    <None Include="Assets\Plugins\DOTween\readme.txt" />
-    <None Include="Assets\Plugins\FieldOfViewRendererPro\ReadMe.txt" />
-    <None Include="Assets\Plugins\DOTween\DOTween50.xml" />
+    <Compile Include="Assets\LuaFramework\Scripts\Common\LuaBehaviour.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Common\LuaEventTrigger.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Common\LuaLoader.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\ConstDefine\AppConst.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\ConstDefine\ManagerName.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\ConstDefine\NotiConst.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Controller\Command\SocketCommand.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Controller\Command\StartUpCommand.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\AppFacade.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Core\Base.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Core\Controller.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Core\Facade.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Core\Manager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Core\Message.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Core\View.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Interfaces\ICommand.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Interfaces\IController.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Interfaces\IManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Interfaces\IMessage.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Framework\Interfaces\IView.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Main.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\Interface\ITimerBehaviour.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\LuaManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\NetworkManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\ObjectPoolManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\PanelManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\ResourceManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\SoundManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\ThreadManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\TimerManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Network\ByteBuffer.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Network\Converter.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Network\Protocal.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Network\Rsa.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Network\SocketClient.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\GameObjectPool.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\ObjectPool.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\TestObjectClass.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Utility\LuaHelper.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Utility\LuaTimerHelper.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Utility\Util.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\View\AppView.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\LuaInterface_EventObjectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\LuaInterface_LuaConstructorWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\LuaInterface_LuaFieldWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\LuaInterface_LuaMethodWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\LuaInterface_LuaOutWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\LuaInterface_LuaPropertyWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_ArrayWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_Collections_Generic_Dictionary_KeyCollectionWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_Collections_Generic_Dictionary_ValueCollectionWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_Collections_Generic_DictionaryWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_Collections_Generic_KeyValuePairWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_Collections_Generic_ListWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_Collections_IEnumeratorWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_Collections_ObjectModel_ReadOnlyCollectionWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_DelegateWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_EnumWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_NullObjectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_ObjectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_StringWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_TypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\UnityEngine_CoroutineWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\BaseType\UnityEngine_ObjectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaAttributes.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaBaseRef.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaBeatEvent.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaDLL.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaEvent.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaException.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaFileUtils.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaFunction.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaMatchType.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaMethodCache.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaMisc.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaStackOp.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaState.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaStatePtr.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaStatic.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaTable.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaThread.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaUnityLibs.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\LuaValueType.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\ObjectPool.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\ObjectTranslator.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\ToLua.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\TypeChecker.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\TypeTraits.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\01_HelloWorld\HelloWorld.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\02_ScriptsFromFile\ScriptsFromFile.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\03_CallLuaFunction\CallLuaFunction.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\04_AccessingLuaVariables\AccessingLuaVariables.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\05_LuaCoroutine\TestCoroutine.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\06_LuaCoroutine2\TestCoroutine2.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\07_LuaThread\TestLuaThread.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\08_AccessingArray\AccessingArray.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\09_Dictionary\System_Collections_Generic_Dictionary_int_TestAccount_KeyCollectionWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\09_Dictionary\System_Collections_Generic_Dictionary_int_TestAccount_ValueCollectionWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\09_Dictionary\System_Collections_Generic_Dictionary_int_TestAccountWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\09_Dictionary\System_Collections_Generic_KeyValuePair_int_TestAccountWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\09_Dictionary\TestAccountWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\09_Dictionary\UseDictionary.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\10_Enum\AccessingEnum.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\11_Delegate\TestDelegate.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\11_Delegate\TestEventListener.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\11_Delegate\TestEventListenerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\12_GameObject\TestGameObject.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\13_CustomLoader\TestCustomLoader.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\14_Out\TestOutArg.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\15_ProtoBuffer\TestProtoBuffer.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\15_ProtoBuffer\TestProtol.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\15_ProtoBuffer\TestProtolWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\16_Int64\TestInt64.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\17_Inherit\TestInherit.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\18_Bundle\TestABLoader.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\19_cjson\TestCJson.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\20_utf8\TestUTF8.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\21_String\TestString.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\22_Reflection\TestReflection.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\23_List\UseList.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\24_Struct\PassStruct.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\Performance\TestPerformance.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestErrorStack\TestInstantiate.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestErrorStack\TestInstantiate2.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestErrorStack\TestLuaStack.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestInjection\BaseTestWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestInjection\TestInjection.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestInjection\ToLuaInjectionTest.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestInjection\ToLuaInjectionTestWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestOverload\TestExport_SpaceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestOverload\TestExportWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Examples\TestOverload\TestOverload.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Injection\LuaInjectionStation.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaClient.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaCoroutine.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaLooper.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaProfiler.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaResLoader.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaConstructor.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaField.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaMethod.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaProperty.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaReflection.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\BaseWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DelegateFactory.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_DOTweenWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_EaseWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_LoopTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_RotateModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_ScrambleModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_SequenceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaBinder.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_AppConstWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ByteBufferWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_GameManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaBehaviourWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaEventTriggerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaHelperWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_NetworkManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_PanelManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ResourceManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_SoundManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ThreadManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_TimerManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_UtilWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaInterface_DebuggerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaInterface_InjectTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaInterface_LuaInjectionStationWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaProfilerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationBlendModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationClipWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationStateWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimatorWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ApplicationWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AssetBundleWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AsyncOperationWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AudioBehaviourWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AudioClipWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AudioSourceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_BehaviourWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_BlendWeightsWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_BoxColliderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CameraClearFlagsWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CameraWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CanvasGroupWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CapsuleColliderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CharacterControllerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ColliderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ComponentWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Events_UnityEvent_intWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Events_UnityEventBaseWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Events_UnityEventWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_AbstractEventDataWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_BaseEventDataWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_EventTriggerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_PointerEventDataWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_RaycastResultWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_EventSystems_UIBehaviourWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_GameObjectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_InputWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_KeyCodeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_LightTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MaterialWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MeshColliderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MeshRendererWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MonoBehaviourWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ParticleSystemWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_PhysicsWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_PlayerPrefsWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_PlayModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_QueueModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RectTransformWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RendererWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RenderSettingsWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RenderTextureWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ResourcesWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RigidbodyWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RuntimePlatformWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ScreenWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ShaderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SkinnedMeshRendererWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SleepTimeoutWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SpaceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SphereColliderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SpriteWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TextMeshWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Texture2DWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TextureWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TimeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TrackedReferenceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TransformWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_Button_ButtonClickedEventWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ButtonWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ContentSizeFitterWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_Dropdown_DropdownEventWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_DropdownWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_GraphicWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_GridLayoutGroupWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_InputFieldWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_LayoutGroupWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_MaskableGraphicWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ScrollbarWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ScrollRectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_SelectableWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_SliderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_TextWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ToggleWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WrapModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WWWWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ViewWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\LuaConst.cs" />
+    <None Include="Assets\link.xml" />
+    <None Include="Assets\StreamingAssets\files.txt" />
+    <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBridgeEditorInfo.xml" />
+    <None Include="Assets\LuaFramework\ToLua\readme.txt" />
+    <None Include="Assets\LuaFramework\ToLua\Injection\LuaInjectionSkipPaths.txt" />
+    <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBlackList.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -701,6 +917,12 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AProPlugins.csproj">
+      <Project>{94DECDCE-FA4E-DC20-6DEB-C3B18562FF1E}</Project>
+      <Name>AProPlugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

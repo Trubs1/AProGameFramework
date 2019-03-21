@@ -8,11 +8,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
-    <ProjectGuid>{6E95F75F-FE2A-E5AD-589D-B36F17657EA6}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectGuid>{8F179D1D-4A6A-B5BD-C04E-73427FA1281E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp-Editor-firstpass</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -47,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectType>EditorPlugins:7</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2018.3.5f1</UnityVersion>
   </PropertyGroup>
@@ -60,8 +61,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\Octodiff\Editor\PatchGenerator.cs" />
-    <Compile Include="Assets\Plugins\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
+    <Compile Include="Assets\Editor\MapEditor.cs" />
+    <Compile Include="Assets\LuaFramework\Editor\CustomSettings.cs" />
+    <Compile Include="Assets\LuaFramework\Editor\Packager.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_EventObject.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_LuaConstructor.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_LuaField.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_LuaMethod.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_LuaInterface_LuaProperty.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_System_Delegate.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_System_Enum.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_System_Object.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_System_String.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_System_Type.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_UnityEngine_GameObject.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_UnityEngine_Input.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_UnityEngine_Object.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\Extend\ToLua_UnityEngine_RectTransform.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\ToLuaExport.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\ToLuaMenu.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Editor\ToLuaTree.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Injection\Editor\ToLuaInjection.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Injection\Editor\ToluaInjectionBlackListPanel.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Injection\Editor\ToLuaInjectionHelper.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Injection\Editor\ToLuaText.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -709,9 +732,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+    <ProjectReference Include="AProPlugins.csproj">
       <Project>{94DECDCE-FA4E-DC20-6DEB-C3B18562FF1E}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
+      <Name>AProPlugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="AProGame.csproj">
+      <Project>{AC336DC8-E08C-9ED8-05ED-3CF137703D91}</Project>
+      <Name>AProGame</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
