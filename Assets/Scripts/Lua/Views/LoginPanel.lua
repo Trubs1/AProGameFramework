@@ -2,22 +2,15 @@
 --- Author:Trubs (WQ)
 --- Date: 2019/03/05
 
-local LoginPanel = {}
+local LoginPanel = LoginPanel or BasePanel:New();--这儿相对于将BasePanel设置为自身的metatable
+--local LoginPanel = {}
 
-LoginPanel.__index = LoginPanel
+function LoginPanel:New (o)
+	o = o or {}
+    setmetatable(o, self)
+    self.__index = self
 
----
---- 构造方法
---- @return LoginPanel
----
-function LoginPanel.New(target)
-    if(target == nil) then
-        local self = {};
-        setmetatable(self, LoginPanel);
-        return self;
-    else
-        return target;
-    end
+	return o
 end
 
 function LoginPanel:Init()
@@ -28,11 +21,12 @@ function LoginPanel:Init()
 			self.titleBgImg.color = Color.yellow
 			self:OnLogin()
 		end)
+	BasePanel.Init(self);
 end
 
 function LoginPanel:Show()
-	Log("~~~~ LoginPanel:Show")
-	self.gameObject:SetActive(true);
+	--self.gameObject:SetActive(true);
+	BasePanel.Show(self)
 end
 
 function LoginPanel:OnLogin()

@@ -9,6 +9,7 @@ PanelsCfg = require("Common.PanelsCfg");
 PanelMgr = require("Managers.PanelManager");
 LuaMsgMgr = require("utils.LuaMsgMgr");
 
+BasePanel = require("Views.BasePanel");
 
 Util = LuaFramework.Util;
 AppConst = LuaFramework.AppConst;

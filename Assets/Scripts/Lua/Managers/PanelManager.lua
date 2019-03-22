@@ -35,7 +35,7 @@ function PanelManager:GetPanel(panelCfg)
 	local panel = self.panels[name]
 	if nil ~= panel then return panel end
 
-    panel = require(panelCfg[1]).New()
+    panel = require(panelCfg[1]):New()
     local gObj = cPanelManager:CreatePanelBySync(name,panel)
     panel.gameObject = gObj
     panel:Init()
