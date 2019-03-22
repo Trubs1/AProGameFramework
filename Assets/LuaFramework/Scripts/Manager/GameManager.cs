@@ -124,7 +124,7 @@ namespace LuaFramework {
 
             WWW www = new WWW(listUrl); yield return www;
             if (www.error != null) {
-                OnUpdateFailed(string.Empty);
+                OnUpdateFailed(www.error);
                 yield break;
             }
             if (!Directory.Exists(dataPath)) {
@@ -177,7 +177,7 @@ namespace LuaFramework {
         }
 
         void OnUpdateFailed(string file) {
-            string message = "更新失败!>" + file;
+            string message = "更新失败!请检查网络情况>" + file;
             Debug.LogError(message);
             facade.SendMessageCommand(NotiConst.UPDATE_MESSAGE, message);
         }

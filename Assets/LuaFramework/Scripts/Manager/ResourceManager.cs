@@ -318,7 +318,7 @@ namespace LuaFramework
         }
 
         /// <summary>
-        /// 载入素材
+        /// 载入素材, 需要用T替换UObject?
         /// </summary>
         void LoadAsset<T>(string abName, string[] assetNames, Action<UObject[]> action = null, LuaFunction func = null) where T : UObject
         {
