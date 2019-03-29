@@ -17,17 +17,20 @@ PanelManager = {
 	panels = {}
 }
 
-
 function PanelManager:Init()
 end
 
 function PanelManager:Show(panelCfg)
-	if self:IsShowing(panelCfg) then return end
 	local panel = self:GetPanel(panelCfg)
+	if panel.isShow then return end
 	panel:Show()
+	panel.isShow = true
 end
 
 function PanelManager:Hide(panelCfg)
+	local panel = self:GetPanel(panelCfg)
+	panel:Hide()
+	panel.isShow = false
 end
 
 function PanelManager:GetPanel(panelCfg)
@@ -44,6 +47,10 @@ function PanelManager:GetPanel(panelCfg)
 end
 
 function PanelManager:IsShowing(panelCfg)
+	local name = panelCfg[2]
+	local panel = self.panels[name]
+	if nil ~= panel then return panel.isShow end
+	return false
 end
 
 

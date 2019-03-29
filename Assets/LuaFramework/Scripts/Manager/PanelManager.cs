@@ -33,15 +33,15 @@ namespace LuaFramework
                 Debug.LogError("~~~~CreatePanelSync faile::>> " + panelName + " " + prefab);
                 return null;
             }
-            GameObject go = Instantiate(prefab) as GameObject;
-            go.name = panelName;
-            go.layer = LayerMask.NameToLayer("Default");
-            go.transform.SetParent(Parent);
-            go.transform.localScale = Vector3.one;
-            go.transform.localPosition = Vector3.zero;
-            var behaviour = go.GetComponent<LuaBehaviour>();
+            GameObject obj = Instantiate(prefab) as GameObject;
+            obj.name = panelName;
+            obj.layer = LayerMask.NameToLayer("Default");
+            obj.transform.SetParent(Parent);
+            obj.transform.localScale = Vector3.one;
+            obj.transform.localPosition = Vector3.zero;
+            var behaviour = obj.GetComponent<LuaBehaviour>();
             behaviour.Initiate(table);
-            return go;
+            return obj;
         }
 
 
