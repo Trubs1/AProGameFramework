@@ -520,7 +520,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: 
     4: ASYNC_MODE
-    7: ASYNC_MODE
+    7: 
   platformArchitecture:
     iOS: 0
   scriptingBackend:

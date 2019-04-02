@@ -128,7 +128,6 @@ namespace LuaFramework
             ResManager.UnloadAssetBundle(abName + AppConst.ExtName);
 #endif
             Util.ClearMemory();
-            Debug.Log("~" + name + " was destroy!");
         }
     }
 }
