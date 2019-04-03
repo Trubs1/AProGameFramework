@@ -17,20 +17,27 @@ namespace LuaFramework
     public class PanelManager : Manager
     {
 
-        public GameObject CreatePanelBySync(string panelName, LuaTable table)
+        public GameObject CreatePanelBySync(string uiPath, LuaTable table)
         {
             GameObject prefab;
-
+            string panelName = uiPath;
 #if UNITY_EDITOR && DirectLoadResourceMode
             //Resources.LoadAssetAtPath被废弃了,而这个是UnityEditor下的,打包的时候会报错,暂时先这样吧,通过这样子预处理完美解决        
-            prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/Panels/" + panelName + ".prefab", typeof(GameObject));
+            prefab = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/UI/Panels/" + uiPath + ".prefab", typeof(GameObject));
 #else
-            prefab = ResManager.LoadAssetSync<GameObject>("prefabs_ui_panels", panelName);
+            string abName = "prefabs_ui_panels";
+            if (uiPath.Contains("/"))
+            {
+                int index = uiPath.LastIndexOf('/');
+                panelName = uiPath.Substring(index + 1);
+                abName = abName + "_" + uiPath.Substring(0, index);
+            }
+            Debug.Log(string.Format("<color=yellow>~~~abName:{0}  {1}</color>", abName, panelName));
+            prefab = ResManager.LoadAssetSync<GameObject>(abName, panelName);
 #endif
-
             if (prefab == null)
             {
-                Debug.LogError("~~~~CreatePanelSync faile::>> " + panelName + " " + prefab);
+                Debug.LogError("~~~~CreatePanelSync faile::>> " + uiPath + " " + prefab);
                 return null;
             }
             GameObject obj = Instantiate(prefab) as GameObject;
