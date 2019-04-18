@@ -23,6 +23,7 @@ namespace LuaFramework
         public Compnt[] compnts;
         protected LuaFunction m_updateFunc;
         protected LuaFunction m_fixedUpdateFunc;
+        protected LuaFunction m_lateUpdateFunc;
 
         public void InitCompnts()
         {
@@ -61,6 +62,7 @@ namespace LuaFramework
             table_["transform"] = transform;
             m_updateFunc = table_["Update"] as LuaFunction;
             m_fixedUpdateFunc = table_["FixedUpdate"] as LuaFunction;
+            m_lateUpdateFunc = table_["LateUpdate"] as LuaFunction;
         }
 
         protected void Start()
@@ -85,6 +87,12 @@ namespace LuaFramework
         {
             if (null == m_fixedUpdateFunc) return;
             m_fixedUpdateFunc.Call(table_);
+        }
+
+        protected void LateUpdate()
+        {
+            if (null == m_lateUpdateFunc) return;
+            m_lateUpdateFunc.Call(table_);
         }
 
         protected void OnEnable()

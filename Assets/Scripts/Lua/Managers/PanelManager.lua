@@ -22,15 +22,13 @@ end
 
 function PanelManager:Show(panelCfg)
 	local panel = self:GetPanel(panelCfg)
-	if panel.isShow then return end
+	if panel.gameObject.activeInHierarchy then return end
 	panel:Show()
-	panel.isShow = true
 end
 
 function PanelManager:Hide(panelCfg)
 	local panel = self:GetPanel(panelCfg)
 	panel:Hide()
-	panel.isShow = false	--之所以这里再处理一次是怕子面板重载了对应函数,而没有实现/调用基础功能
 end
 
 function PanelManager:GetPanel(panelCfg)
@@ -49,7 +47,7 @@ end
 function PanelManager:IsShowing(panelCfg)
 	local name = panelCfg[2]
 	local panel = self.panels[name]
-	if nil ~= panel then return panel.isShow end
+	if nil ~= panel then return panel.gameObject.activeInHierarchy end
 	return false
 end
 

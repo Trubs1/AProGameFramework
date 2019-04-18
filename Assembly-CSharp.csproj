@@ -98,7 +98,6 @@
     <Compile Include="Assets\LuaFramework\Scripts\Network\SocketClient.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\GameObjectPool.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\ObjectPool.cs" />
-    <Compile Include="Assets\LuaFramework\Scripts\ObjectPool\TestObjectClass.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Utility\LuaHelper.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Utility\LuaTimerHelper.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Utility\UnityExtension.cs" />
@@ -321,10 +320,12 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WWWWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ViewWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\LuaConst.cs" />
+    <Compile Include="Assets\Scripts\CSharp\AtomScripts\FullBgBtnCtrl.cs" />
     <None Include="Assets\link.xml" />
     <None Include="Assets\StreamingAssets\files.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBridgeEditorInfo.xml" />
     <None Include="Assets\LuaFramework\ToLua\readme.txt" />
+    <None Include="Assets\Scripts\Lua\Views\ChatPanel.lua.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\LuaInjectionSkipPaths.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBlackList.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">

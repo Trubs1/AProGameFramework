@@ -17,12 +17,10 @@ function BasePanel:Init()
 end
 
 function BasePanel:Show()
-	self.isShow = true
 	self.gameObject:SetActive(true)
 end
 
 function BasePanel:Hide()
-	self.isShow = false
 	self.gameObject:SetActive(false)
 end
 
