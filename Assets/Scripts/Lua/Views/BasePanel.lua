@@ -17,7 +17,13 @@ function BasePanel:Init()
 end
 
 function BasePanel:Show()
-	self.gameObject:SetActive(true);
+	self.isShow = true
+	self.gameObject:SetActive(true)
+end
+
+function BasePanel:Hide()
+	self.isShow = false
+	self.gameObject:SetActive(false)
 end
 
 

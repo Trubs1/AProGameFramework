@@ -31,8 +31,11 @@ function LoginPanel:OnLogin()
     coroutine.start(
         function()
 	        --coroutine.wait(1)
-	        Log("<color=yellow>开始加载场景::</color>","Demo")
-			UnityEngine.SceneManagement.SceneManager.LoadScene("Demo")		
+	        Log("<color=yellow>开始加载场景::</color>",PanelMgr)
+			--UnityEngine.SceneManagement.SceneManager.LoadScene("Demo")	
+    		--PanelMgr:Hide(PanelsCfg.LoginPanel)
+    		self:Hide()
+    		PanelMgr:Show(PanelsCfg.ChatPanel)
         end)
 end
 

@@ -3663,7 +3663,7 @@ public static class ToLuaExport
         }
     }
 
-    public static bool IsObsolete(MemberInfo mb)
+    public static bool IsObsolete(MemberInfo mb)//不想导出的函数用[NoToLuaAttribute]属性标记
     {
         object[] attrs = mb.GetCustomAttributes(true);
 

@@ -5,7 +5,7 @@
 PanelsCfg =
 {
   LoginPanel = {"Views.LoginPanel", "Login/LoginPanel"};
-	
+  ChatPanel = {"Views.ChatPanel", "Chat/ChatPanel"};	
 }
 
 return PanelsCfg

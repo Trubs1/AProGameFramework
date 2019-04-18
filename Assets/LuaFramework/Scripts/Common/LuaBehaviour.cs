@@ -5,10 +5,6 @@
 
 using UnityEngine;
 using LuaInterface;
-using System.Collections;
-using System.Collections.Generic;
-using System;
-using UnityEngine.UI;
 
 namespace LuaFramework
 {
@@ -44,10 +40,15 @@ namespace LuaFramework
                 else
                 {
                     string name = compnt.cpnt.name;
-                    if (name.IndexOf("(Clone)") > -1)
-                    {
-                        name = name.Replace("(Clone)", string.Empty);
-                    }
+                    if (name.IndexOf(' ') > -1)
+                        name = name.Replace(" ", string.Empty);
+                    //if (name.IndexOf("(Clone)") > -1)
+                    //    name = name.Replace("(Clone)", string.Empty);
+                    if(name.IndexOf('(') > -1)
+                        name = name.Replace("(", string.Empty);
+                    if (name.IndexOf(')') > -1)
+                        name = name.Replace("(", string.Empty);
+                    name = name.InitialToLower();
                     table_[name] = compnt.cpnt;
                 }
             }

@@ -30,7 +30,7 @@ end
 function PanelManager:Hide(panelCfg)
 	local panel = self:GetPanel(panelCfg)
 	panel:Hide()
-	panel.isShow = false
+	panel.isShow = false	--之所以这里再处理一次是怕子面板重载了对应函数,而没有实现/调用基础功能
 end
 
 function PanelManager:GetPanel(panelCfg)

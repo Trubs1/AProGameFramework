@@ -6,20 +6,17 @@ using System.Collections.Generic;
 
 namespace LuaFramework {
     public class AppConst {
-
-        /// <summary>
-        /// 如果开启更新模式，前提必须启动框架自带服务器端。
-        /// 否则就需要自己将StreamingAssets里面的所有内容
-        /// 复制到自己的Webserver上面，并修改下面的WebUrl。
-        /// </summary>
         public const bool UpdateMode = false;                       //更新模式-默认关闭 
         public const bool LuaByteMode = true;                       //Lua字节码模式-默认关闭 
-        public const bool LuaBundleMode = true;                    //Lua代码AssetBundle模式
-
+#if UNITY_EDITOR
+        public const bool LuaBundleMode = false;                    //编辑器下默认AssetBundle为false lua代码即改即现
+#else
+        public const bool LuaBundleMode = true;                     //Lua代码AssetBundle模式
+#endif
         public const int TimerInterval = 1;
         public const int GameFrameRate = 60;                        //游戏帧频
 
-        public const string AppName = "APro";               //应用程序名称
+        public const string AppName = "APro";                       //应用程序名称
         public const string LuaTempDir = "Lua/";                    //临时目录
         public const string AppPrefix = AppName + "_";              //应用程序前缀
         public const string ExtName = ".unity3d";                   //素材扩展名
