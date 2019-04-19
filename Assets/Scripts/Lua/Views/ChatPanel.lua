@@ -1,6 +1,6 @@
---- Description: 登录面板
+--- Description: 聊天界面
 --- Author:Trubs (WQ)
---- Date: 2019/03/17
+--- Date: 2019/04/18
 local canUseGM = true
 local ChatPanel = ChatPanel or BasePanel:New()
 

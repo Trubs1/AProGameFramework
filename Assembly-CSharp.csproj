@@ -321,27 +321,56 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ViewWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\LuaConst.cs" />
     <Compile Include="Assets\Scripts\CSharp\AtomScripts\FullBgBtnCtrl.cs" />
+    <None Include="Assets\Scripts\Shaders\CelShadingForward.shader" />
     <None Include="Assets\link.xml" />
+    <None Include="Assets\Scripts\Shaders\ModelOutline.shader" />
     <None Include="Assets\StreamingAssets\files.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBridgeEditorInfo.xml" />
     <None Include="Assets\LuaFramework\ToLua\readme.txt" />
     <None Include="Assets\Scripts\Lua\Views\ChatPanel.lua.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\LuaInjectionSkipPaths.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBlackList.txt" />
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="PsdPlugin">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Triangle.Runtime">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.2D.Triangle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>E:/AProGameFramework/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -505,9 +534,6 @@
     <Reference Include="UnityEngine.VFXModule">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/Managed/UnityEngine/UnityEngine.VFXModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VehiclesModule">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
     </Reference>
@@ -516,9 +542,6 @@
     </Reference>
     <Reference Include="UnityEngine.WindModule">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.XRModule">
-      <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Locator">
       <HintPath>C:/Program Files/Unity2018-3-5/Editor/Data/Managed/Unity.Locator.dll</HintPath>
