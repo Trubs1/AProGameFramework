@@ -1,9 +1,12 @@
 ﻿/* 
  LuaFramework Code By Jarjin leeibution 3.0 License 
 */
+namespace LuaFramework
+{
+    using UnityEngine;
+    using System.Collections;
 
-using UnityEngine;
-using System.Collections;
-
-public interface IManager {
+    public interface IManager
+    {
+    }
 }

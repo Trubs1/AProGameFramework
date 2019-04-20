@@ -1,5 +1,8 @@
 ﻿using System;
-
-public interface IView {
-    void OnMessage(IMessage message);
+namespace LuaFramework
+{
+    public interface IView
+    {
+        void OnMessage(IMessage message);
+    }
 }

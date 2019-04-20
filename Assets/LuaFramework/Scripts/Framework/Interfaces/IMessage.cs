@@ -2,15 +2,16 @@
  LuaFramework Code By Jarjin lee 
 */
 using System;
-
-public interface IMessage
+namespace LuaFramework
 {
-	string Name { get; }
+    public interface IMessage
+    {
+        string Name { get; }
 
-	object Body { get; set; }
-		
-	string Type { get; set; }
+        object Body { get; set; }
 
-    string ToString();
+        string Type { get; set; }
+
+        string ToString();
+    }
 }
-

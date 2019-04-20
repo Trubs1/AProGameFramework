@@ -3562,3 +3562,9 @@ Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_LuaEventTriggerWrap.cs
 Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_SceneManagement_SceneManagerWrap.cs.meta
 Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_SceneManagement_SceneManagerWrap.cs
 .vs/AProGameFramework/DesignTimeBuild/.dtbcache
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_ViewWrap.cs.meta
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_ViewWrap.cs
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_ManagerWrap.cs.meta
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_ManagerWrap.cs
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_BaseWrap.cs.meta
+Assets/LuaFramework/ToLua/Source/Generate/LuaFramework_BaseWrap.cs

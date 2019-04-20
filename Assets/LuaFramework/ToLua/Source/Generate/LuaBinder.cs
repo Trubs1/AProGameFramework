@@ -11,9 +11,6 @@ public static class LuaBinder
 		L.BeginModule(null);
 		LuaProfilerWrap.Register(L);
 		LuaInterface_DebuggerWrap.Register(L);
-		ViewWrap.Register(L);
-		BaseWrap.Register(L);
-		ManagerWrap.Register(L);
 		L.BeginModule("UnityEngine");
 		UnityEngine_BehaviourWrap.Register(L);
 		UnityEngine_MonoBehaviourWrap.Register(L);
@@ -136,6 +133,9 @@ public static class LuaBinder
 		LuaFramework_ThreadManagerWrap.Register(L);
 		LuaFramework_NetworkManagerWrap.Register(L);
 		LuaFramework_ResourceManagerWrap.Register(L);
+		LuaFramework_ViewWrap.Register(L);
+		LuaFramework_BaseWrap.Register(L);
+		LuaFramework_ManagerWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("LuaInterface");
 		LuaInterface_LuaInjectionStationWrap.Register(L);
