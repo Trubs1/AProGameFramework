@@ -1,0 +1,43 @@
+﻿--- Description: 登录面板
+--- Author:Trubs (WQ)
+--- Date: 2019/03/17
+
+local ChatPanel = ChatPanel or BasePanel:New()
+
+function ChatPanel:New (o)
+	o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+
+	return o
+end
+
+function ChatPanel:Init()
+	Log("~~~~ ChatPanel:Init",self.loginBtn)
+	self.sendBtn.onClick:AddListener(function () self:OnSend() end)
+	BasePanel.Init(self)
+end
+
+function ChatPanel:Show()
+	BasePanel.Show(self)
+end
+
+function ChatPanel:OnSend()
+	local inputStr = self.inputField.text
+	Log("<color=yellow>谁点我???? @@@:</color>",string.sub(inputStr,1,4))
+	Log("<color=yellow>谁点我???? ###:</color>",string.sub(inputStr,4))
+
+	if "^GM:" == string.sub(inputStr,1,3) then
+		self:GMHandler(string.sub(inputStr,3))
+	else
+		self.contentTxt.text = self.contentTxt.text .. "\n" .. inputStr
+	end
+end
+
+function ChatPanel:GMHandler(gmCode)
+	Log("<color=yellow>gmCode:</color>",gmCode)
+	loadstring(gmCode)()
+end
+
+
+return ChatPanel

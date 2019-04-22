@@ -325,6 +325,7 @@
     <None Include="Assets\link.xml" />
     <None Include="Assets\Scripts\Shaders\ModelOutline.shader" />
     <None Include="Assets\StreamingAssets\files.txt" />
+    <None Include="Assets\StreamingAssets\lua\Views\ChatPanel.lua.txt" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBridgeEditorInfo.xml" />
     <None Include="Assets\LuaFramework\ToLua\readme.txt" />
     <None Include="Assets\Scripts\Lua\Views\ChatPanel.lua.txt" />
